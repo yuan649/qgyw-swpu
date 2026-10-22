@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# 正式域名替换后同步更新此处与 sitemap.xml
+Sitemap: https://yuan649.github.io/qgyw-swpu/sitemap.xml
