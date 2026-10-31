@@ -3,582 +3,2105 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<meta name="theme-color" content="#0B0206" />
-<title>强国“油”我辅导员工作室｜西南石油大学石油与天然气工程学院</title>
+<title>强国“油”我辅导员工作室</title>
+<link rel="canonical" href="/" />
 
-<!-- ── SEO / 分享卡 ───────────────────────────────────────────────
-     部署地址：GitHub Pages —— https://yuan649.github.io/qgyw-swpu/
-     仓库名若不是 qgyw-swpu，需同步替换本文件里的 canonical / og:url /
-     og:image / twitter:image，以及 robots.txt 与 sitemap.xml 中的地址。
-     ──────────────────────────────────────────────────────────── -->
-<meta name="description" content="西南石油大学石油与天然气工程学院「强国“油”我」辅导员工作室：以党建引领、立德树人为主线，落地「一引领·两浸润·三个一体化」育人体系，累计原创内容 290+ 篇、红微课讲堂 80+ 期。" />
-<link rel="canonical" href="https://yuan649.github.io/qgyw-swpu/" />
-
+<meta name="description" content="西南石油大学石油与天然气工程学院「强国‘油’我」辅导员工作室：以党建引领立德树人，聚焦党员身份意识、发展意识与教育活动，形成可复制的育人打法。" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="强国“油”我辅导员工作室" />
-<meta property="og:locale" content="zh_CN" />
-<meta property="og:url" content="https://yuan649.github.io/qgyw-swpu/" />
-<meta property="og:title" content="强国“油”我辅导员工作室｜党建引领，立德树人" />
-<meta property="og:description" content="西南石油大学石工院「强国“油”我」辅导员工作室：一引领·两浸润·三个一体化，原创内容 290+ 篇，红微课讲堂 80+ 期。" />
-<meta property="og:image" content="https://yuan649.github.io/qgyw-swpu/images/og-cover.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="强国“油”我辅导员工作室" />
+<meta property="og:title" content="强国“油”我辅导员工作室" />
+<meta property="og:description" content="党建引领，立德树人。连续两届国家级网络教育优秀作品，全国党建工作样板支部。" />
+<meta property="og:image" content="assets/avatar.png" />
+<meta name="theme-color" content="#080506" />
+<link rel="icon" type="image/png" href="assets/avatar.png" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="强国“油”我辅导员工作室｜党建引领，立德树人" />
-<meta name="twitter:description" content="西南石油大学石工院「强国“油”我」辅导员工作室：一引领·两浸润·三个一体化。" />
-<meta name="twitter:image" content="https://yuan649.github.io/qgyw-swpu/images/og-cover.jpg" />
+<style>
+/* ══════════════════════════════════════════════════════════════════════════
+   强国“油”我 · 深地取光 v3
+   ─────────────────────────────────────────────────────────────────────────
+   设计概念：把官网做成一口竖井上的展厅。
+     · 全站只有一盏灯（顶灯 / 井架泛光灯），从上方 50% 处斜下打进右侧荣誉区；
+     · 灯下面是「地层」：横向细线一层层往下排，越深越暗，最底下一层是红的地火；
+     · 纸白展板挂在井壁上，光从左上擦过纸面，纸背能透出一点红绸；
+     · 油仔不站在地上，它悬在光里 —— 底下有一团随呼吸缩放的影子，那才是「悬浮」
+       的可信来源（没有影子的悬浮，看起来只是贴图）。
+     · 尾页把同一盏灯倒过来打：光从右下升起来，人走的时候屋里还亮着。
+   所有光影都是纯 CSS：radial / linear / conic / clip-path / mask / blur，
+   唯一的位图是那一张 SVG 噪点，没有任何外链。
+   ══════════════════════════════════════════════════════════════════════════ */
 
-<link rel="icon" href="./images/favicon-32.png" type="image/png" sizes="32x32" />
-<link rel="icon" href="./images/favicon-192.png" type="image/png" sizes="192x192" />
-<link rel="apple-touch-icon" href="./images/apple-touch-icon.png" sizes="180x180" />
-<link rel="stylesheet" href="./css/style.css?v=20261022" />
+/* ── 00 · 令牌 ─────────────────────────────────────────────────────────── */
+:root{
+  /* 夜（舞台）。比 v2 更冷一档：#080506 让暖光有「落点」 */
+  --night-900:#080506;
+  --night-850:#0C0708;
+  --night-800:#14100F;
+  --night-700:#1E1815;
+  --night-line:rgba(217,179,106,.16);
+
+  /* 纸（展板，半透明：底层红绸像宣纸背透的灯） */
+  --paper-0:#FCFAF6;
+  --paper-1:#F6F1E8;
+  --paper-2:#ECE5D8;
+
+  /* 墨 */
+  --ink-900:#17120F;
+  --ink-700:#3A322B;
+  --ink-600:#574E44;
+  --ink-400:#6B6055;
+  --rule:rgba(23,18,15,.14);
+
+  /* 党建红（唯一强调色，≤8% 面积） */
+  --red-700:#7E0C13;
+  --red-600:#A8121A;
+  --red-500:#C2171F;
+  --red-50:#FBEDEB;
+
+  /* 铜（荣誉专用，≤3% 面积） */
+  --brass-600:#8C6A31;
+  --brass-500:#A8823F;
+  --brass-300:#D9B36A;
+  --brass-100:#F0E2C6;
+
+  /* 灯光专用（只进 layer，不落到字色上） */
+  --lamp-1:rgba(255,231,192,.95);
+  --lamp-2:rgba(255,204,142,.55);
+  --lamp-3:rgba(226,140,86,.20);
+  --oil:#F08612;                     /* 油仔主体色，只用于光晕 */
+
+  /* 夜底上的字 */
+  --n-ink:#F4EDE1;
+  --n-ink-2:rgba(244,237,225,.68);
+  --n-ink-3:rgba(244,237,225,.40);
+
+  /* 字体：显示体封顶 700（900 的中文宋体是合成假粗体，会糊） */
+  --f-display:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong","SimSun",serif;
+  --f-sans:"PingFang SC","Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-num:"Georgia","Times New Roman",serif;
+
+  /* 字阶 8 档 */
+  --t-display:clamp(2.6rem,6.1vw,5.15rem);
+  --t-h2:clamp(1.375rem,2.2vw,2.125rem);
+  --t-h3:clamp(1.0625rem,1.3vw,1.25rem);
+  --t-lead:clamp(.9375rem,1.05vw,1.0625rem);
+  --t-body:1rem;
+  --t-sm:.875rem;
+  --t-xs:.8125rem;
+  --t-label:.75rem;
+
+  /* 间距 / 圆角 / 阴影 */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:32px; --s7:48px; --s8:64px;
+  --r-sm:6px; --r-md:14px; --r-lg:28px; --r-pill:999px;
+  --sh-1:0 1px 2px rgba(0,0,0,.18), 0 12px 28px -16px rgba(0,0,0,.5);
+  --sh-2:0 2px 6px rgba(0,0,0,.22), 0 32px 64px -32px rgba(0,0,0,.6);
+
+  --maxw:1240px;
+  --pad:clamp(20px,4.5vw,60px);
+  --nav-h:64px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur:.66s;
+
+  --lit:1;                            /* 本间房的开灯亮度，由 body[data-room] 改写 */
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;height:100%;height:100dvh;overflow:hidden;overscroll-behavior:none}
+body{
+  margin:0;height:100%;height:100dvh;overflow:hidden;   /* 文档本身绝对不滚 */
+  overscroll-behavior:none;                              /* 干掉 iOS 橡皮筋 */
+  background:var(--night-900);color:var(--n-ink);
+  font-family:var(--f-sans);font-size:var(--t-body);line-height:1.8;
+  -webkit-font-smoothing:antialiased;font-synthesis:none;
+}
+img{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:rgba(194,23,31,.3)}
+:focus-visible{outline:2px solid var(--brass-300);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:16px;top:-60px;z-index:200;background:var(--red-600);color:#fff;
+  padding:10px 18px;border-radius:var(--r-sm);font-size:var(--t-sm);text-decoration:none;transition:top .2s}
+.skip:focus{top:16px}
+
+/* ── 01 · 舞台：一盏灯，四层空气 ───────────────────────────────────────── */
+#stage{position:fixed;inset:0;z-index:0;overflow:hidden;background:var(--night-900)}
+.lay{position:absolute;inset:0;pointer-events:none}
+
+/* ① 深层：底下三千米有一团红，往上迅速冷下去。
+      末尾那道暗是必要的：没有它，红会一路糊到屏幕底，整页变成棕雾。 */
+.lay--deep{
+  background:
+    radial-gradient(100% 44% at 50% 112%, rgba(194,23,31,.44), rgba(126,12,19,.16) 42%, transparent 72%),
+    radial-gradient(66% 38% at 85% 104%, rgba(217,179,106,.10), transparent 70%),
+    linear-gradient(180deg,#070405 0%,#080506 38%,#110508 74%,#080405 100%);
+}
+
+/* ② 灯组：灯丝 / 主光锥 / 芯部 / 光池。整体挂在 .lay--rig 里，方便尾页换一处坐标 */
+.lay--rig > *{position:absolute;pointer-events:none;display:block}
+.rig-lamp{
+  left:53%;right:31%;top:-10vh;height:24vh;
+  background:radial-gradient(closest-side at 50% 42%,
+    rgba(255,246,228,.34), rgba(255,206,146,.12) 46%, transparent 74%);
+  filter:blur(20px);mix-blend-mode:screen;
+  opacity:calc(var(--lit) * .86);
+}
+/* 光锥窄、边缘钝、只落在右半边 —— 宽了就成探照灯打在整面墙上 */
+.rig-beam{
+  left:0;right:0;top:-14%;height:120%;
+  clip-path:polygon(56% 0,64% 0,90% 100%,34% 100%);
+  background:linear-gradient(180deg,
+    rgba(255,226,180,.19) 0%,
+    rgba(255,206,146,.085) 28%,
+    rgba(226,140,86,.028) 56%,
+    transparent 78%);
+  filter:blur(20px);mix-blend-mode:screen;
+  opacity:calc(var(--lit) * .95);
+  animation:lampFlicker 13s ease-in-out infinite alternate;
+}
+.rig-core{
+  left:0;right:0;top:-10%;height:112%;
+  clip-path:polygon(58.8% 0,62.2% 0,74% 100%,48% 100%);
+  background:linear-gradient(180deg,
+    rgba(255,242,214,.17), rgba(255,214,160,.05) 44%, transparent 76%);
+  filter:blur(24px);mix-blend-mode:screen;
+  opacity:calc(var(--lit) * .82);
+  animation:lampFlicker2 17s ease-in-out infinite alternate;
+}
+.rig-pool{
+  top:52%;height:52%;left:0;right:0;
+  background:radial-gradient(34% 32% at 66% 46%,
+    rgba(255,196,124,.17), rgba(255,170,96,.05) 48%, transparent 76%);
+  filter:blur(24px);mix-blend-mode:screen;
+  opacity:calc(var(--lit) * .88);
+}
+@keyframes lampFlicker{
+  from{opacity:calc(var(--lit) * .82)} to{opacity:calc(var(--lit) * 1)}
+}
+@keyframes lampFlicker2{
+  from{opacity:calc(var(--lit) * .70)} to{opacity:calc(var(--lit) * .96)}
+}
+
+/* ③ 地层：横向细线，越往下越清楚，中间一根断层线是红的 */
+.lay--strata{
+  background-image:
+    repeating-linear-gradient(180deg, rgba(217,179,106,.070) 0 1px, transparent 1px 58px),
+    repeating-linear-gradient(180deg, rgba(194,23,31,.055) 0 1px, transparent 1px 232px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 4%,#000 44%,#000 94%,transparent 100%);
+          mask-image:linear-gradient(180deg,transparent 4%,#000 44%,#000 94%,transparent 100%);
+  opacity:calc(var(--lit) * .58);
+}
+/* ④ 井壁刻度：贴着底边的一柄钢尺，越往下刻度越实 */
+.lay--ticks{
+  top:auto;bottom:0;height:132px;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(217,179,106,.34) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(90deg, rgba(217,179,106,.16) 0 1px, transparent 1px 8px);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 84%,#000 100%);
+          mask-image:linear-gradient(180deg,transparent 0%,#000 84%,#000 100%);
+  opacity:calc(var(--lit) * .34);
+}
+/* ⑤ 尘：九粒，26s 缓慢上浮一次（不要多，多了像雪花特效） */
+.lay--dust{
+  background-image:
+    radial-gradient(1.6px 1.6px at 18% 62%, rgba(255,232,196,.55), transparent 60%),
+    radial-gradient(1.2px 1.2px at 27% 38%, rgba(255,232,196,.42), transparent 60%),
+    radial-gradient(2px 2px at 44% 74%, rgba(255,232,196,.38), transparent 60%),
+    radial-gradient(1.2px 1.2px at 58% 28%, rgba(255,232,196,.50), transparent 60%),
+    radial-gradient(1.6px 1.6px at 66% 56%, rgba(255,232,196,.44), transparent 60%),
+    radial-gradient(1.2px 1.2px at 74% 82%, rgba(255,232,196,.34), transparent 60%),
+    radial-gradient(1.8px 1.8px at 83% 34%, rgba(255,232,196,.40), transparent 60%),
+    radial-gradient(1.2px 1.2px at 91% 66%, rgba(255,232,196,.30), transparent 60%),
+    radial-gradient(1.4px 1.4px at 36% 18%, rgba(255,232,196,.34), transparent 60%);
+  opacity:calc(var(--lit) * .72);
+  animation:dustDrift 26s ease-in-out infinite alternate;
+}
+@keyframes dustDrift{
+  from{transform:translate3d(0,8px,0)}
+  to{transform:translate3d(12px,-22px,0)}
+}
+/* ⑥ 颗粒：让流光有胶片底噪，不是塑料渐变 */
+.lay--grain{
+  opacity:.042;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.55'/></svg>");
+}
+/* ⑦ 压暗：光在右上，左下落到近黑。这是「高级」与「糊一片」的分界。
+      三束叠加：径向收口 + 左向压暗（光在右）+ 上下夹边。 */
+.lay--vig{
+  background:
+    radial-gradient(118% 104% at 60% -10%,
+      rgba(7,4,5,0) 0%, rgba(7,4,5,.26) 28%, rgba(7,4,5,.72) 60%, rgba(7,4,5,.97) 100%),
+    linear-gradient(108deg, rgba(7,4,5,.62) 0%, rgba(7,4,5,.18) 34%, transparent 58%),
+    linear-gradient(180deg, rgba(7,4,5,.34) 0%, transparent 20%, rgba(7,4,5,.30) 78%, rgba(7,4,5,.62) 100%);
+}
+body[data-room="follow"] .lay--vig{
+  background:
+    radial-gradient(118% 104% at 30% 110%,
+      rgba(7,4,5,0) 0%, rgba(7,4,5,.24) 28%, rgba(7,4,5,.70) 60%, rgba(7,4,5,.96) 100%),
+    linear-gradient(288deg, rgba(7,4,5,.58) 0%, rgba(7,4,5,.16) 34%, transparent 58%),
+    linear-gradient(180deg, rgba(7,4,5,.58) 0%, rgba(7,4,5,.24) 26%, transparent 60%);
+}
+
+/* 分区调光：七间房共用一盏灯，只是开得大小不同 —— 像展厅里逐间点灯 */
+body[data-room="hero"]   {--lit:1}
+body[data-room="honor"]  {--lit:.38}
+body[data-room="about"]  {--lit:.22}
+body[data-room="matrix"] {--lit:.22}
+body[data-room="works"]  {--lit:.20}
+body[data-room="team"]   {--lit:.26}
+body[data-room="follow"] {--lit:.94}
+#stage .lay{transition:opacity 1.1s var(--ease)}
+
+/* 尾页：同一盏灯从右下升上来（走的时候屋里还亮着） */
+body[data-room="follow"] .rig-lamp{
+  top:auto;bottom:-10vh;left:4%;right:auto;width:28vw;height:26vh;
+  background:radial-gradient(closest-side at 46% 58%,
+    rgba(255,246,228,.46), rgba(255,206,146,.16) 48%, transparent 74%);
+}
+body[data-room="follow"] .rig-beam{
+  top:auto;bottom:-18%;height:120%;
+  clip-path:polygon(16% 100%,30% 100%,84% 0,4% 0);
+  background:linear-gradient(0deg,
+    rgba(255,226,180,.17) 0%,
+    rgba(255,206,146,.075) 30%,
+    rgba(226,140,86,.025) 60%,
+    transparent 82%);
+  filter:blur(34px);
+}
+body[data-room="follow"] .rig-core{
+  top:auto;bottom:-14%;height:114%;
+  clip-path:polygon(19% 100%,24.4% 100%,46% 0,28% 0);
+  background:linear-gradient(0deg,
+    rgba(255,244,220,.22), rgba(255,214,160,.07) 40%, transparent 76%);
+  filter:blur(26px);
+}
+body[data-room="follow"] .rig-pool{
+  top:auto;bottom:2%;height:46%;
+  background:radial-gradient(38% 46% at 24% 52%,
+    rgba(255,196,124,.20), rgba(255,170,96,.06) 46%, transparent 76%);
+}
+
+/* ── 02 · 轨道 ─────────────────────────────────────────────────────────── */
+/* 横向轨道 = 一条原生滚动容器。
+   手势、惯性、吸附全部交给浏览器；JS 不再碰 transform ——
+   这是真机上「跟手 / 不跳屏 / 不卡中间」的唯一可靠做法。 */
+#rail{
+  position:relative;z-index:2;display:flex;width:100%;
+  height:100vh;height:100dvh;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+#rail::-webkit-scrollbar{display:none;width:0;height:0}
+/* 每一屏：横向必吸附（mandatory + always = 一划一屏，绝不停在两屏之间）；
+   纵向自己滚，滚到底不把外层带走（overscroll-behavior:contain）。 */
+.pane{
+  width:100vw;flex:0 0 100vw;
+  height:100vh;height:100dvh;
+  position:relative;
+  overflow-x:hidden;overflow-y:auto;
+  overscroll-behavior:contain;
+  scroll-snap-align:center;
+  scroll-snap-stop:always;
+  scrollbar-width:none;
+}
+.pane::-webkit-scrollbar{display:none;width:0}
+.pane__in{
+  position:relative;height:100%;max-width:var(--maxw);margin:0 auto;
+  padding:calc(var(--nav-h) + 22px) var(--pad) 26px;
+  display:flex;flex-direction:column;justify-content:center;
+}
+/* 宣纸：光从左上擦过纸面，右下角透出一点红，边缘压一道纸折的暗 */
+.pane--paper{
+  background:
+    linear-gradient(90deg, rgba(23,18,15,.05), transparent 3.5%, transparent 96.5%, rgba(23,18,15,.05)),
+    radial-gradient(120% 100% at 12% -16%, rgba(255,255,255,.92), rgba(255,255,255,0) 48%),
+    radial-gradient(86% 64% at 92% 112%, rgba(194,23,31,.050), transparent 64%),
+    linear-gradient(180deg, rgba(252,250,246,.968), rgba(246,241,232,.955));
+  /* 纸面重映射：任何 --n-ink-* / 铜色，在纸底上自动换成墨与深铜。
+     少了这一段，荣誉报道与刻度年份会直接隐形。 */
+  --n-ink:#17120F;
+  --n-ink-2:#574E44;
+  --n-ink-3:#6B6055;
+  --brass-300:#9A7635;
+  --brass-500:#8C6A31;
+  --night-800:#ECE5D8;
+  --night-line:rgba(23,18,15,.14);
+}
+.pane--paper::after{                        /* 纸纤维，一处 SVG，无外链 */
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(rgba(23,18,15,.055) .5px, transparent .5px);
+  background-size:5px 5px;
+}
+
+/* ── 03 · 顶栏 ─────────────────────────────────────────────────────────── */
+.bar{
+  position:fixed;top:0;left:0;right:0;z-index:60;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 var(--pad);
+  background:linear-gradient(180deg,rgba(8,5,6,.78),rgba(8,5,6,0));
+  transition:background .4s var(--ease),color .4s var(--ease),box-shadow .4s var(--ease);
+}
+.bar.is-light{
+  background:rgba(252,250,246,.9);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  color:var(--ink-900);box-shadow:0 1px 0 var(--rule);
+}
+.bar__brand{display:flex;align-items:center;gap:10px;text-decoration:none;min-width:0;
+  font-size:var(--t-sm);letter-spacing:.08em;white-space:nowrap}
+.bar__brand > span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* 顶栏用公众号头像。头像自带白底，所以给一圈铜色发丝线收边，
+   不裁切、不调色 —— 用户认的就是这一格头像。 */
+.bar__mark{
+  width:32px;height:32px;flex:none;border-radius:8px;object-fit:cover;
+  background:#fff;
+  box-shadow:
+    0 0 0 1px rgba(217,179,106,.45),
+    0 1px 0 rgba(255,255,255,.16) inset,
+    0 8px 18px -10px rgba(0,0,0,.85);
+  transition:box-shadow .3s var(--ease),transform .3s var(--ease);
+}
+.bar__brand:hover .bar__mark{transform:translateY(-1px) scale(1.04);
+  box-shadow:0 0 0 1px rgba(217,179,106,.72),0 10px 22px -10px rgba(0,0,0,.95)}
+.bar nav{display:none;gap:2px;font-size:var(--t-sm)}
+.bar nav a{
+  position:relative;padding:8px 13px;border-radius:var(--r-pill);text-decoration:none;
+  letter-spacing:.06em;opacity:.72;transition:opacity .22s,background .22s,color .22s;
+}
+.bar nav a:hover{opacity:1;background:rgba(255,255,255,.09)}
+.bar.is-light nav a:hover{background:rgba(168,18,26,.07)}
+.bar nav a.on{opacity:1;color:var(--brass-300);background:rgba(217,179,106,.13)}
+.bar.is-light nav a.on{color:var(--red-600);background:var(--red-50)}
+@media (min-width:980px){ .bar nav{display:flex} }
+
+.bar__right{display:flex;align-items:center;gap:6px}
+.count{font-family:var(--f-num);font-size:var(--t-label);letter-spacing:.1em;
+  white-space:nowrap;flex:none;   /* Y1：窄屏不许折成两行 */
+  color:var(--brass-300);font-variant-numeric:tabular-nums;margin-right:6px}
+.bar.is-light .count{color:var(--brass-600)}
+/* 之前是三条 1.5px 的线、无边框无底色 —— 在深色首屏上基本等于隐形，
+   用户会说「没有导航菜单」。现在给它一个看得见的有界方块。 */
+.burger{
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4.5px;
+  width:40px;height:40px;margin-right:-6px;padding:0;color:inherit;cursor:pointer;
+  border:1px solid rgba(244,237,225,.28);border-radius:10px;
+  background:rgba(8,5,6,.34);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:border-color .25s,background .25s;
+}
+.burger:hover{border-color:rgba(217,179,106,.6);background:rgba(8,5,6,.5)}
+.bar.is-light .burger{border-color:rgba(23,18,15,.20);background:rgba(255,255,255,.55)}
+.bar.is-light .burger:hover{border-color:rgba(168,18,26,.5)}
+.burger span{width:20px;height:1.5px;background:currentColor;transition:transform .3s var(--ease),opacity .2s}
+body.menu-open .burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+body.menu-open .burger span:nth-child(2){opacity:0}
+body.menu-open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+@media (min-width:980px){ .burger{display:none} }
+
+.drawer{
+  position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;justify-content:center;
+  padding:var(--nav-h) var(--pad) calc(var(--s8) + env(safe-area-inset-bottom));
+  background:rgba(8,5,6,.97);
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s;
+}
+body.menu-open .drawer{opacity:1;visibility:visible;transform:none}
+body.menu-open .bar{background:transparent;box-shadow:none;color:var(--n-ink)}
+.drawer a{display:flex;align-items:baseline;gap:14px;padding:18px 0;
+  border-bottom:1px solid rgba(217,179,106,.14);text-decoration:none;
+  font-family:var(--f-display);font-weight:700;font-size:1.375rem;letter-spacing:.05em}
+.drawer a i{font-style:normal;font-family:var(--f-num);font-size:var(--t-label);color:var(--brass-500)}
+.drawer a.on{color:var(--brass-300)}
+
+/* 右侧进度尺：横向轨道必须有「我在第几屏」的坐标 */
+.dots{
+  position:fixed;right:calc(var(--pad) * .55);top:50%;transform:translateY(-50%);
+  z-index:50;display:flex;flex-direction:column;gap:10px;align-items:flex-end;
+}
+.dots button{
+  appearance:none;border:0;background:none;padding:6px 0;cursor:pointer;
+  display:flex;align-items:center;gap:9px;color:var(--n-ink-3);
+  font-family:var(--f-num);font-size:10px;letter-spacing:.08em;
+  transition:color .25s;
+}
+.dots button::after{content:"";width:16px;height:1px;background:currentColor;
+  transition:width .3s var(--ease),background .3s}
+.dots button:hover{color:var(--n-ink)}
+.dots button.on{color:var(--brass-300)}
+.dots button.on::after{width:30px;background:var(--brass-300)}
+body[data-tone="light"] .dots button{color:rgba(23,18,15,.34)}
+body[data-tone="light"] .dots button:hover{color:var(--ink-700)}
+body[data-tone="light"] .dots button.on{color:var(--red-600)}
+body[data-tone="light"] .dots button.on::after{background:var(--red-600)}
+@media (max-width:760px){ .dots{display:none} }
+/* 进度尺是 fixed 的，内容却有 1240 上限 —— 窄一点的屏上两者会压在一起。
+   解决：给内容右侧留出尺子的宽度；屏幕不够宽时只留数字，尺子自然收窄。 */
+@media (min-width:761px){ .pane__in{padding-right:calc(var(--pad) + 56px)} }
+@media (max-width:1619px){
+  .dots button{font-size:0}                      /* 只留 01–07 与那道横线 */
+  .dots button span{font-size:10px;letter-spacing:.08em}
+}
+
+/* 手机：底部分页圆点 —— 常驻胶囊，从进站第一秒就在，不自动隐没。
+   滚动途中可能从内容上方扫过（半透明毛玻璃保证可辨），
+   滚到底时内容停在胶囊上方（pane__in 已留 padding）。 */
+.mdots{display:none}
+@media (max-width:760px){
+  .mdots{
+    display:flex;position:fixed;left:50%;transform:translateX(-50%);z-index:52;
+    bottom:calc(10px + env(safe-area-inset-bottom));
+    padding:3px 7px;border-radius:999px;gap:0;
+    background:rgba(8,5,6,.60);
+    border:1px solid rgba(217,179,106,.24);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    box-shadow:0 6px 18px -8px rgba(0,0,0,.55);
+    pointer-events:none;                    /* 胶囊本体不挡内容，只有点本身可点 */
+    transition:opacity .25s,visibility .25s;
+  }
+  body[data-tone="light"] .mdots{
+    background:rgba(252,250,246,.74);border-color:rgba(23,18,15,.10);
+    box-shadow:0 6px 16px -10px rgba(23,18,15,.35);
+  }
+  .mdots button{appearance:none;border:0;background:none;cursor:pointer;padding:8px 5px;
+    display:grid;place-items:center;pointer-events:auto;-webkit-tap-highlight-color:transparent}
+  .mdots button span{
+    display:block;width:6px;height:6px;border-radius:50%;
+    background:rgba(244,237,225,.34);
+    transition:width .3s var(--ease),background .3s var(--ease);
+  }
+  body[data-tone="light"] .mdots button span{background:rgba(23,18,15,.24)}
+  .mdots button.on span{width:20px;border-radius:3px;background:var(--brass-300)}
+  body[data-tone="light"] .mdots button.on span{background:var(--red-600)}
+  body.menu-open .mdots{opacity:0;visibility:hidden}
+}
+/* 手机进度条 .mbar 已废弃（Y6）：与分页胶囊同位会穿帮，进度由胶囊圆点承担 */
+.mbar{display:none!important}
+
+/* 左侧竖排房名：像展厅门口那块竖着的牌子 */
+.vch{
+  position:fixed;left:calc(var(--pad) * .58);top:50%;transform:translateY(-50%);
+  z-index:50;display:flex;align-items:center;gap:16px;pointer-events:none;
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-family:var(--f-display);font-size:12px;font-weight:400;letter-spacing:.44em;
+  color:rgba(244,237,225,.32);transition:color .45s var(--ease);
+}
+.vch::before{content:"";width:1px;height:38px;background:currentColor;opacity:.55}
+body[data-tone="light"] .vch{color:rgba(23,18,15,.32)}
+@media (max-width:1179px){ .vch{display:none} }
+
+/* 导览员油仔：挂在进度尺下方，换屏时轻轻一蹦 */
+.railbuddy{
+  position:fixed;right:calc(var(--pad) * .55 - 9px);top:calc(50% + 146px);
+  z-index:51;width:46px;pointer-events:none;
+  filter:drop-shadow(0 8px 12px rgba(0,0,0,.45));
+}
+.railbuddy img{width:100%;height:auto;opacity:.62;animation:oilFloat 8.4s ease-in-out infinite;
+  transition:opacity .3s}
+.railbuddy.hop{animation:buddyHop .44s cubic-bezier(.3,.7,.4,1)}
+@keyframes buddyHop{
+  0%{transform:translateY(0)}
+  36%{transform:translateY(-10px) rotate(-3deg)}
+  70%{transform:translateY(1.5px)}
+  100%{transform:translateY(0)}
+}
+@media (max-width:1179px){ .railbuddy{display:none} }
+
+/* ── 04 · 通用版式 ─────────────────────────────────────────────────────── */
+.eyebrow{display:flex;align-items:center;gap:10px;font-size:var(--t-label);
+  letter-spacing:.2em;color:var(--brass-500);margin:0 0 var(--s3)}
+.eyebrow::before{content:"";width:24px;height:2px;background:var(--red-600);flex:none}
+.eyebrow span{font-family:var(--f-num);letter-spacing:.06em;color:var(--n-ink-3)}
+.pane--paper .eyebrow span{color:var(--ink-400)}
+h2.sec{font-family:var(--f-display);font-weight:700;font-size:var(--t-h2);line-height:1.4;
+  letter-spacing:.01em;margin:0 0 var(--s4);max-width:23em;text-wrap:balance}
+.pane--paper h2.sec{color:var(--ink-900)}
+
+/* ── 05 · 首屏 ─────────────────────────────────────────────────────────── */
+.hero{position:relative;padding-bottom:26px}
+.hero__grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.10fr) minmax(0,.92fr) auto;
+  gap:clamp(24px,3vw,52px);
+  align-items:center;
+}
+.hero__eyebrow{font-size:var(--t-label);letter-spacing:.2em;color:var(--brass-300);margin:0 0 var(--s4)}
+.hero__title{
+  font-family:var(--f-display);font-weight:700;font-size:var(--t-display);
+  line-height:1.02;letter-spacing:.015em;margin:0 0 var(--s3);
+  color:#F8F1E4;
+  text-shadow:0 2px 0 rgba(255,255,255,.05),0 26px 60px rgba(0,0,0,.66);
+}
+/* 引号做成 .4em 上标，铜金渐变 + 一层暖光晕 */
+.hero__title .q{
+  background:linear-gradient(176deg,#FFF6E4 4%,#E9CC94 48%,#C6A05E 92%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 28px rgba(230,120,60,.32));
+}
+.hero__title .q i{font-style:normal;font-size:.4em;color:rgba(244,237,225,.5);
+  -webkit-text-fill-color:rgba(244,237,225,.5);
+  vertical-align:.95em;letter-spacing:0;margin:0 .06em}
+.hero__full{
+  font-family:var(--f-display);font-weight:400;font-size:var(--t-lead);line-height:1.7;
+  letter-spacing:.045em;color:var(--n-ink-2);margin:0 0 var(--s4);
+  padding-left:var(--s4);border-left:2px solid var(--brass-300);max-width:34em;
+}
+.hero__claim{font-size:var(--t-lead);line-height:1.85;color:var(--n-ink-2);
+  max-width:25em;margin:0 0 var(--s5)}
+.cta{display:flex;flex-wrap:wrap;gap:var(--s3);align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:46px;padding:0 24px;border-radius:var(--r-pill);
+  font-size:var(--t-sm);letter-spacing:.07em;text-decoration:none;border:1px solid transparent;
+  transition:transform .25s var(--ease),background .25s,box-shadow .25s,border-color .25s}
+.btn--solid{background:linear-gradient(160deg,#C2171F,#980F17);color:#fff;
+  box-shadow:0 16px 34px -18px rgba(200,20,30,.95),inset 0 1px 0 rgba(255,255,255,.24)}
+.btn--solid:hover{background:linear-gradient(160deg,#A8121A,#7E0C13);transform:translateY(-2px);
+  box-shadow:0 22px 40px -18px rgba(200,20,30,1),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn--ghost{border-color:rgba(244,237,225,.24);color:var(--n-ink)}
+.btn--ghost:hover{border-color:var(--brass-300);color:var(--brass-300);transform:translateY(-2px)}
+
+/* — 铜牌：金属感 = 斜向扫光 + 内描边 + 铆钉 + 凹刻数字 — */
+.plaques{display:flex;flex-direction:column;gap:10px}
+.plaque{
+  /* 材质容器必须自带一套字色：它坐在纸屏里，但它是深色金属面 */
+  --n-ink:#F4EDE1;
+  --n-ink-2:rgba(244,237,225,.70);
+  --n-ink-3:rgba(244,237,225,.42);
+  --brass-300:#D9B36A;
+  --brass-500:#A8823F;
+  position:relative;overflow:hidden;display:flex;align-items:center;gap:16px;
+  padding:clamp(15px,1.8vw,21px) clamp(16px,2vw,24px);border-radius:var(--r-md);
+  background:linear-gradient(168deg,#2E241B 0%,#191410 54%,#241C15 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(217,179,106,.30),
+    inset 0 0 0 1px rgba(217,179,106,.15),
+    0 24px 48px -30px #000;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+}
+.plaque::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(112deg,transparent 34%,rgba(217,179,106,.10) 46%,
+    rgba(255,255,255,.055) 50%,transparent 64%)}
+/* 两枚铆钉：左上 + 右上，是「这是一块挂上去的牌子」的唯一暗示 */
+.plaque::after{content:"";position:absolute;left:11px;right:11px;top:9px;height:3px;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 0 50%, rgba(217,179,106,.55) 0 1.4px, transparent 1.6px),
+    radial-gradient(circle at 100% 50%, rgba(217,179,106,.55) 0 1.4px, transparent 1.6px);
+  opacity:.7}
+.plaque:hover{transform:translateX(4px);
+  box-shadow:inset 0 1px 0 rgba(217,179,106,.44),inset 0 0 0 1px rgba(217,179,106,.26),
+    0 28px 56px -30px #000}
+.plaque__n{position:relative;flex:none;font-family:var(--f-num);font-weight:400;
+  font-variant-numeric:tabular-nums;font-size:clamp(32px,3.5vw,48px);line-height:.92;
+  letter-spacing:-.02em;color:#E9DCBE;
+  text-shadow:0 -1px 0 rgba(0,0,0,.85),0 1px 0 rgba(255,236,200,.16),0 3px 10px rgba(0,0,0,.55)}
+.plaque--lg .plaque__n{font-size:clamp(44px,4.8vw,64px)}
+.plaque__n em{font-style:normal;font-size:.32em;margin-left:3px;letter-spacing:.08em;color:var(--brass-300)}
+.plaque__t{display:block;font-size:var(--t-sm);letter-spacing:.08em;font-weight:500;color:var(--n-ink)}
+.plaque__s{display:block;margin-top:2px;font-size:var(--t-label);letter-spacing:.03em;color:var(--n-ink-3)}
+
+/* — 数字条 — */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(24px,3vw,44px);
+  padding-top:var(--s4);border-top:1px solid var(--night-line)}
+.strip div{padding:0 var(--s5);border-left:1px solid rgba(217,179,106,.13)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip b{display:block;font-family:var(--f-num);font-weight:400;font-size:clamp(22px,2.2vw,30px);
+  line-height:1.15;color:var(--brass-300);font-variant-numeric:tabular-nums;white-space:nowrap}
+.strip b em{font-style:normal;font-size:.44em;margin-left:2px;color:var(--n-ink-3);letter-spacing:.05em}
+.strip span{display:block;margin-top:4px;font-size:var(--t-label);color:var(--n-ink-3);letter-spacing:.06em}
+
+/* — 油仔：悬在光里的藏品 — */
+.hero__oil{
+  position:relative;width:clamp(152px,15vw,238px);margin:0;flex:none;
+  display:flex;flex-direction:column;align-items:center;
+}
+.oil-glow{
+  position:absolute;left:50%;top:44%;width:190%;height:120%;transform:translate(-50%,-50%);
+  pointer-events:none;
+  background:
+    radial-gradient(closest-side at 50% 46%, rgba(255,214,160,.30), transparent 72%),
+    radial-gradient(closest-side at 50% 64%, rgba(240,134,18,.20), transparent 76%);
+  filter:blur(22px);
+  animation:oilGlow 7.6s ease-in-out infinite alternate;
+}
+@keyframes oilGlow{from{opacity:.62}to{opacity:1}}
+/* 墙上的影子：随悬浮高度一起缩放，这才是「离地」的证据。
+   放在 img 与标签之间的流里 —— 油仔浮到最高点时脚下会张开一道缝。 */
+.oil-shadow{
+  position:relative;z-index:1;flex:none;
+  width:58%;height:13px;margin-top:5px;
+  background:radial-gradient(closest-side, rgba(0,0,0,.80), rgba(0,0,0,.34) 56%, transparent 78%);
+  filter:blur(7px);
+  animation:oilShadow 7.6s ease-in-out infinite;
+}
+@keyframes oilShadow{
+  0%,100%{transform:scale(1);opacity:.62}
+  50%{transform:scale(.84);opacity:.36}
+}
+.oil-bob{position:relative;z-index:2;display:block;animation:oilFloat 7.6s ease-in-out infinite}
+@keyframes oilFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-14px)}
+}
+.hero__oil img{
+  width:100%;height:auto;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.55)) drop-shadow(0 0 44px rgba(240,134,18,.20));
+  transition:transform .55s var(--ease),filter .55s var(--ease);
+  transform-origin:50% 86%;
+}
+/* 悬停：轻轻一弹 + 光晕变亮。只动位移和发光，不做扭动/跑动 */
+.hero__oil:hover img{
+  transform:translateY(-7px) scale(1.045) rotate(-1.4deg);
+  filter:drop-shadow(0 26px 32px rgba(0,0,0,.6)) drop-shadow(0 0 66px rgba(240,134,18,.34));
+}
+.oil-cap{
+  position:relative;z-index:3;margin-top:14px;padding-top:10px;width:86%;text-align:center;
+  border-top:1px solid rgba(217,179,106,.26);
+}
+.oil-cap b{display:block;font-family:var(--f-display);font-weight:700;font-size:var(--t-xs);
+  letter-spacing:.22em;color:var(--brass-100)}
+.oil-cap i{display:block;margin-top:3px;font-style:normal;font-size:9.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:rgba(244,237,225,.34)}
+
+/* 横向推进提示（右下角，只在首屏） */
+.hint{
+  position:absolute;right:0;bottom:2px;margin:0;
+  display:flex;align-items:center;gap:9px;
+  font-size:10.5px;letter-spacing:.22em;color:rgba(244,237,225,.30);
+}
+.hint i{display:block;width:34px;height:1px;background:rgba(244,237,225,.28);
+  animation:hintSlide 2.8s ease-in-out infinite}
+@keyframes hintSlide{
+  0%,100%{transform:translateX(0);opacity:.5}
+  50%{transform:translateX(6px);opacity:1}
+}
+
+/* ── 06 · 荣誉（碑） ───────────────────────────────────────────────────── */
+.wall{display:grid;grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr);
+  gap:clamp(24px,3vw,44px);align-items:start}
+@media (max-width:900px){ .wall{grid-template-columns:1fr;gap:var(--s5)} }
+.board{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.board .plaque{flex-direction:column;align-items:flex-start;gap:10px;height:100%}
+.board__hero{grid-column:1 / -1}
+.board .plaque__n{font-size:clamp(42px,5.2vw,82px)}
+.board__h{font-family:var(--f-display);font-weight:700;font-size:var(--t-h3);
+  letter-spacing:.03em;color:var(--n-ink);margin:0}
+.board__d{font-size:var(--t-label);line-height:1.75;color:var(--n-ink-3);margin:0}
+
+.record{border-top:1px solid var(--night-line)}
+.record__h{font-size:var(--t-label);letter-spacing:.18em;color:var(--brass-300);
+  margin:0;padding:var(--s3) 0 var(--s2)}
+.record a{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;
+  padding:11px 0;border-bottom:1px solid rgba(217,179,106,.12);text-decoration:none;
+  transition:padding-left .3s var(--ease),background .3s}
+.record a:hover{padding-left:10px;background:rgba(217,179,106,.05)}
+.record__no{font-family:var(--f-num);font-size:var(--t-label);color:var(--brass-500)}
+.record__t{font-size:var(--t-xs);line-height:1.65;color:var(--n-ink-2)}
+.record a:hover .record__t{color:var(--red-600)}
+.record__d{font-family:var(--f-num);font-size:var(--t-label);color:var(--n-ink-3);white-space:nowrap}
+
+.ruler{margin-top:clamp(20px,2.6vw,34px);padding-top:var(--s4);border-top:1px solid var(--night-line)}
+.ruler__h{font-size:var(--t-label);letter-spacing:.18em;color:var(--brass-300);margin:0 0 var(--s5)}
+.ruler__track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.ruler__track::before{content:"";position:absolute;left:0;right:0;top:4px;height:1px;
+  background:linear-gradient(90deg,rgba(217,179,106,.55),rgba(217,179,106,.10))}
+.ruler__i{position:relative;padding-top:18px}
+.ruler__i::before{content:"";position:absolute;left:0;top:1px;width:7px;height:7px;border-radius:50%;
+  background:var(--night-800);box-shadow:inset 0 0 0 1px var(--brass-500)}
+.ruler__i:last-child::before{background:var(--brass-300);box-shadow:0 0 0 4px rgba(217,179,106,.16)}
+.ruler__y{font-family:var(--f-num);font-size:var(--t-label);color:var(--brass-300);letter-spacing:.05em}
+.ruler__t{font-size:var(--t-label);line-height:1.6;color:var(--n-ink-3);margin-top:3px}
+
+/* ── 07 · 关于（纸 · Bento） ───────────────────────────────────────────── */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r-md);
+  overflow:hidden;box-shadow:var(--sh-2)}
+.cell{position:relative;background:var(--paper-0);overflow:hidden;padding:clamp(18px,2.1vw,28px);
+  display:flex;flex-direction:column;transition:background .35s var(--ease)}
+.cell:hover{background:var(--paper-1)}
+.cell__idx{position:absolute;right:-.04em;top:-.3em;pointer-events:none;user-select:none;
+  font-family:var(--f-num);font-size:clamp(76px,8.6vw,120px);line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(168,18,26,.16);letter-spacing:-.03em}
+.cell__k{font-size:var(--t-label);letter-spacing:.18em;color:var(--brass-600);
+  margin:0 0 var(--s3);position:relative}
+.cell--a{grid-column:span 5}
+.cell--b{grid-column:span 4}
+.cell--c{grid-column:span 3;background:var(--red-600);color:#fff}
+.cell--d{grid-column:span 5}
+.cell--e{grid-column:span 7}
+@media (max-width:900px){
+  .bento{grid-template-columns:1fr}
+  .cell--a,.cell--b,.cell--c,.cell--d,.cell--e{grid-column:span 1}
+}
+.cell--a .txt{font-family:var(--f-display);font-weight:400;font-size:var(--t-lead);
+  line-height:1.95;letter-spacing:.01em;color:var(--ink-700);max-width:29em;margin:0;position:relative}
+.cell--a .txt strong{font-weight:700;color:var(--red-700);
+  background:linear-gradient(180deg,transparent 62%,rgba(168,18,26,.12) 62%);padding:0 .1em}
+.cell--a .note{margin:var(--s4) 0 0;padding-top:var(--s3);border-top:1px solid var(--rule);
+  font-size:var(--t-xs);line-height:1.85;color:var(--ink-400)}
+.sys{display:flex;flex-direction:column;gap:var(--s3);position:relative}
+.sys__r{display:grid;grid-template-columns:3em 1fr;gap:10px;align-items:baseline}
+.sys__k{font-size:var(--t-label);letter-spacing:.12em;color:var(--red-600);
+  border-bottom:1px solid rgba(168,18,26,.24);padding-bottom:1px}
+.sys__v{font-size:var(--t-xs);line-height:1.8;color:var(--ink-600)}
+.cell--c{align-items:center;justify-content:center;text-align:center;overflow:visible}
+.seal{width:clamp(112px,11vw,138px);aspect-ratio:1;flex:none;display:grid;place-items:center;
+  background:#5C070D;color:#fff;border-radius:6px;font-family:var(--f-display);font-weight:700;
+  font-size:clamp(15px,1.5vw,18px);line-height:1.3;letter-spacing:.06em;transform:rotate(-2.4deg);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),inset 0 0 0 6px #5C070D,
+    inset 0 0 0 7px rgba(255,255,255,.30),0 16px 32px -16px rgba(0,0,0,.7)}
+.cell--c .seal__k{margin:var(--s3) 0 0;font-size:var(--t-label);letter-spacing:.2em;color:rgba(255,255,255,.7)}
+.focus{display:flex;flex-direction:column;gap:var(--s4);position:relative}
+.focus__i{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+  padding-left:var(--s3);border-left:2px solid var(--rule);transition:border-color .3s}
+.focus__i:hover{border-left-color:var(--red-600)}
+.focus__n{font-family:var(--f-num);font-size:var(--t-h3);line-height:1.2;color:var(--brass-500)}
+.focus__b{display:block;font-size:var(--t-sm);font-weight:600;margin-bottom:1px;color:var(--ink-900)}
+.focus__d{font-size:var(--t-label);line-height:1.75;color:var(--ink-400)}
+.idea{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3);position:relative}
+.idea__i b{display:block;font-family:var(--f-display);font-size:var(--t-h3);font-weight:700;letter-spacing:.03em;color:var(--ink-900)}
+.idea__i i{display:block;font-style:normal;font-size:var(--t-label);letter-spacing:.12em;
+  color:var(--ink-400);margin:1px 0 var(--s2);text-transform:uppercase}
+.idea__i ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.idea__i li{position:relative;padding-left:10px;font-size:var(--t-label);line-height:1.7;color:var(--ink-600)}
+.idea__i li::before{content:"";position:absolute;left:0;top:.72em;width:4px;height:1px;background:var(--brass-500)}
+
+/* ── 08 · 内容矩阵（纸） ───────────────────────────────────────────────── */
+.mx{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+@media (max-width:900px){ .mx{grid-template-columns:1fr;gap:var(--s3)} }
+.mx__c{position:relative;background:var(--paper-1);border-radius:var(--r-md);
+  padding:clamp(18px,2vw,26px);box-shadow:var(--sh-1);overflow:hidden;
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.mx__c:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.mx__n{font-family:var(--f-num);font-size:clamp(46px,5vw,68px);line-height:1;
+  color:rgba(168,18,26,.13);letter-spacing:-.03em;margin-bottom:-14px}
+.mx__t{font-family:var(--f-display);font-weight:700;font-size:var(--t-h3);letter-spacing:.03em;
+  margin:0 0 2px;color:var(--ink-900)}
+.mx__en{font-size:var(--t-label);letter-spacing:.16em;color:var(--ink-400);
+  text-transform:uppercase;margin:0 0 var(--s3);padding-bottom:var(--s3);border-bottom:1px solid var(--rule)}
+.mx__l{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.mx__l li{display:grid;grid-template-columns:4.6em 1fr;gap:10px;align-items:baseline}
+.mx__l b{font-size:var(--t-xs);color:var(--red-700);font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.mx__l span{font-size:var(--t-xs);line-height:1.7;color:var(--ink-600)}
+
+/* ── 09 · 作品档案柜（纸） ─────────────────────────────────────────────── */
+.cab{display:flex;flex-direction:column;flex:1;min-height:0}
+.cab__bar{display:flex;align-items:center;gap:var(--s4);flex-wrap:wrap;
+  padding-bottom:var(--s3);border-bottom:1px solid var(--rule);margin-bottom:var(--s3)}
+.tabs{display:inline-flex;gap:2px;padding:3px;border-radius:var(--r-pill);
+  background:rgba(23,18,15,.05);border:1px solid var(--rule)}
+.tabs button{appearance:none;border:0;background:none;cursor:pointer;font-family:var(--f-sans);
+  display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 16px;border-radius:var(--r-pill);
+  font-size:var(--t-xs);letter-spacing:.08em;color:var(--ink-600);transition:background .2s,color .2s}
+.tabs button i{font-style:normal;font-family:var(--f-num);font-size:10px;opacity:.7}
+.tabs button.on{background:var(--red-600);color:#fff}
+.tabs button.on i{opacity:.85;color:#fff}
+.cab__meta{margin-left:auto;font-size:var(--t-label);letter-spacing:.08em;color:var(--ink-400)}
+.cab__meta b{font-family:var(--f-num);color:var(--brass-600);font-weight:400;font-size:var(--t-sm)}
+
+.cab__view{flex:1;min-height:0;position:relative}
+.cab__grid{
+  position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  grid-auto-rows:max-content;      /* 必须有：否则窄屏 15 行会被压成 25px 细条 */
+  gap:10px;align-content:safe center;padding-right:4px;
+  scrollbar-width:thin;scrollbar-color:rgba(168,18,26,.28) transparent;
+}
+@media (min-width:980px){ .cab__grid{grid-template-columns:repeat(5,1fr)} }
+/* 影像只有 6 个系列：3 列 × 2 行，比 5 列掉一个单干净得多，卡片也更大 */
+@media (min-width:980px){ .cab__grid.is-six{grid-template-columns:repeat(3,1fr)} }
+.cab__grid.is-six .ser__t{font-size:14px}
+.cab__grid.is-six .ser__m{font-size:10.5px}
+.cab__grid::-webkit-scrollbar{width:6px}
+.cab__grid::-webkit-scrollbar-thumb{background:rgba(168,18,26,.24);border-radius:3px}
+/* ── 卡片：整张就是封面，文字压在图上（16:9 + object-fit:cover，绝不拉伸）── */
+.ser{
+  position:relative;display:block;text-align:left;appearance:none;
+  border:1px solid var(--rule);background:#1A1012;border-radius:var(--r-md);
+  overflow:hidden;cursor:pointer;padding:0;font-family:inherit;color:inherit;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+}
+.ser:hover{transform:translateY(-3px);box-shadow:var(--sh-2);border-color:rgba(168,18,26,.34)}
+.ser:focus-visible{outline:2px solid var(--red-600);outline-offset:2px}
+
+.ser__cov{
+  position:relative;aspect-ratio:16/9;overflow:hidden;display:block;
+  background:
+    radial-gradient(120% 92% at 20% -12%, rgba(217,179,106,.26), transparent 58%),
+    radial-gradient(96% 84% at 92% 114%, rgba(194,23,31,.44), transparent 62%),
+    linear-gradient(158deg,#310B0F 0%,#16080A 56%,#280C10 100%);
+}
+.ser__cov img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 50%;
+  transition:transform .4s cubic-bezier(.22,.61,.36,1);
+}
+.ser:hover .ser__cov img{transform:scale(1.05)}      /* 悬停 1.05 / 0.4s */
+
+/* 底部遮罩：0.85 黑 → 透明。文字因此永远压得住照片 */
+.ser__meta{
+  position:absolute;left:0;right:0;bottom:0;height:66%;z-index:2;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 11px 9px;pointer-events:none;
+  background:linear-gradient(to top,
+    rgba(0,0,0,.85) 0%, rgba(0,0,0,.52) 36%, transparent 64%);
+}
+.ser__t{
+  font-family:var(--f-display);font-weight:700;font-size:12.5px;line-height:1.36;
+  letter-spacing:.01em;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.ser__m{
+  display:flex;align-items:baseline;gap:5px;margin-top:3px;
+  font-size:10px;letter-spacing:.06em;color:rgba(255,255,255,.66);
+}
+.ser__m b{font-family:var(--f-num);font-weight:400;font-size:11px;color:var(--brass-300)}
+
+/* 右上角类型章：红色已经归党建，这里用暗玻璃 + 铜字，不抢照片 */
+.ser__k{
+  position:absolute;top:8px;right:8px;z-index:3;
+  font-size:9px;line-height:1.5;letter-spacing:.14em;color:var(--brass-100);
+  background:rgba(10,6,7,.5);border:1px solid rgba(217,179,106,.26);
+  border-radius:3px;padding:2px 6px;
+}
+
+/* 扫光：只给「没有真图」的兜底卡用，照片上扫光会显脏 */
+.ser__cov:not(.has-img):not(.cover-placeholder)::before{
+  content:"";position:absolute;inset:7px;border:1px solid rgba(217,179,106,.24);
+  border-radius:4px;pointer-events:none;z-index:3;
+}
+.ser__cov::after{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(104deg,transparent 36%,rgba(255,255,255,.16) 47%,
+    rgba(217,179,106,.12) 53%,transparent 66%);
+  transform:translateX(-125%);transition:transform .95s var(--ease);
+}
+.ser:hover .ser__cov.has-img::after{transform:translateX(125%)}
+
+.ser__no{
+  position:absolute;left:11px;top:9px;z-index:1;
+  font-family:var(--f-num);font-size:clamp(26px,2.6vw,34px);line-height:1;letter-spacing:-.03em;
+  color:transparent;-webkit-text-stroke:1px rgba(233,220,190,.40);
+}
+
+/* ══ 纯色占位卡（仅剩影像区 2 张）══════════════════════════════════════
+   ⚠️ 图文区 15 张已全部换成实拍，不再经过这段代码。
+      目前只有「影像_02 先锋行动」「影像_05 小课堂」两张没有现场照，
+      判定是构建时按画面标准差算的（sd<20 视为纯色卡），图一换自动失效。
+      这 2 张补齐后，本段 45 行可整段删除，卡片会自动走普通照片结构。
+   不假装它是照片：把底色压深、正中压一枚大号暗金档案盒，
+   系列名居中烫金，底部的图文区整块撤掉（避免同一句话出现两次）。
+   ::before 同时干两件事：内描边（烫金细框）+ 居中放大的图标。 */
+.cover-placeholder{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  padding:10px 12px;
+}
+.cover-placeholder img{filter:brightness(.50) saturate(.95) contrast(1.10)}
+/* 金色底（#987A1A）跟金字的明度太近，必须单独压得更深，否则字浮在底上 */
+.cover-placeholder.ph--gold img{filter:brightness(.30) saturate(1.12) contrast(1.20)}
+/* ::before = 烫金细框 + 居中巨大的暗金档案袋剪影（只当底纹，不压字） */
+.cover-placeholder::before{
+  content:"";position:absolute;inset:7px;z-index:1;pointer-events:none;border-radius:4px;
+  border:1px solid rgba(217,179,106,.18);
+  background:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M4 27V19h17l6 8h33v23.5a4.5 4.5 0 0 1-4.5 4.5h-47A4.5 4.5 0 0 1 4 50.5V27z' fill='%23D9B36A' fill-opacity='.14'/></svg>") 50% 92% / 62% auto no-repeat;
+}
+.cover-placeholder::after{display:none}                 /* 静态展板，不扫光 */
+.cover-placeholder .ph__lb{
+  position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;
+  padding:6px 8px;
+  /* 只给文字这一小块压一团暗底，没有边界 —— 金色底也能压住字，又不像贴了个色块 */
+  background:radial-gradient(72% 96% at 50% 50%, rgba(0,0,0,.58), rgba(0,0,0,.22) 62%, transparent 88%);
+}
+.cover-placeholder .ph__t{
+  font-family:var(--f-display);font-weight:700;font-size:16px;line-height:1.34;
+  letter-spacing:.1em;color:var(--brass-300);text-align:center;max-width:100%;
+  text-shadow:0 1px 0 rgba(0,0,0,.55),0 2px 10px rgba(0,0,0,.75),0 0 26px rgba(0,0,0,.45);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.cover-placeholder .ph__m{
+  display:flex;align-items:center;gap:8px;
+  font-size:9.5px;letter-spacing:.2em;color:rgba(240,226,198,.70);
+  text-shadow:0 1px 3px rgba(0,0,0,.9);
+}
+.cover-placeholder .ph__m::before,
+.cover-placeholder .ph__m::after{
+  content:"";width:16px;height:1px;background:rgba(217,179,106,.48);
+}
+
+/* 条目清单：同屏切换，不跳屏、不弹层 */
+.cab__list{position:absolute;inset:0;display:none;flex-direction:column;min-height:0;
+  background:var(--paper-0)}
+.cab[data-view="list"] .cab__grid{display:none}
+.cab[data-view="list"] .cab__list{display:flex}
+.cab__head{display:flex;align-items:center;gap:var(--s3);padding-bottom:var(--s3);
+  border-bottom:2px solid var(--ink-900)}
+.cab__back{appearance:none;border:1px solid var(--rule);background:none;cursor:pointer;
+  width:36px;height:36px;border-radius:50%;display:grid;place-items:center;
+  font-size:14px;color:var(--ink-700);transition:background .2s,border-color .2s;flex:none}
+.cab__back:hover{background:var(--red-50);border-color:rgba(168,18,26,.3)}
+.cab__hn{font-family:var(--f-display);font-weight:700;font-size:var(--t-h3);
+  letter-spacing:.02em;color:var(--ink-900);margin:0;flex:1;min-width:0}
+.cab__hc{font-family:var(--f-num);font-size:var(--t-xs);color:var(--brass-600);white-space:nowrap}
+.cab__items{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  list-style:none;margin:0;padding:0;
+  scrollbar-width:thin;scrollbar-color:rgba(168,18,26,.28) transparent;
+  -webkit-mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 32px),transparent 100%);
+          mask-image:linear-gradient(180deg,#000 0,#000 calc(100% - 32px),transparent 100%)}
+.it{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:14px;align-items:baseline;
+  padding:11px 4px;border-bottom:1px solid var(--rule);text-decoration:none;
+  transition:background .25s,padding-left .25s var(--ease)}
+.it:hover{background:var(--red-50);padding-left:12px}
+.it__no{font-family:var(--f-num);font-size:var(--t-label);color:var(--brass-500);letter-spacing:.04em}
+.it__t{font-size:var(--t-sm);line-height:1.6;color:var(--ink-700)}
+.it:hover .it__t{color:var(--red-700)}
+.it__d{font-family:var(--f-num);font-size:var(--t-label);color:var(--ink-400);white-space:nowrap}
+.it__r{font-size:var(--t-label);color:var(--ink-400);white-space:nowrap}
+.it__go{font-size:var(--t-xs);color:var(--red-600);opacity:0;transition:opacity .25s}
+.it:hover .it__go{opacity:1}
+.cab__foot{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-top:var(--s2);font-size:var(--t-label);color:var(--ink-400)}
+.cab__foot a{color:var(--red-700);text-decoration:none;border-bottom:1px solid rgba(168,18,26,.3)}
+
+/* ── 10 · 团队（纸 · 环形画廊） ────────────────────────────────────────── */
+.tm{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);
+  gap:clamp(20px,3vw,44px);align-items:center}
+@media (max-width:980px){ .tm{grid-template-columns:1fr;gap:var(--s4)} }
+
+.ring{position:relative;height:clamp(250px,31vh,320px);perspective:1500px;
+  touch-action:pan-y;user-select:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 13%,#000 87%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 13%,#000 87%,transparent 100%)}
+.ring__stage{position:absolute;inset:0;transform-style:preserve-3d;
+  transform:rotateX(-5deg) rotateY(var(--rot,0deg));
+  transition:transform .86s cubic-bezier(.4,0,.2,1)}
+.ring.is-dragging .ring__stage{transition:none}
+.ri{
+  position:absolute;left:50%;top:50%;width:148px;height:196px;margin:-98px 0 0 -74px;
+  transform:rotateY(calc(var(--i) * 36deg)) translateZ(296px);
+  border-radius:10px;overflow:hidden;background:#2A231D;
+  box-shadow:0 18px 34px -18px rgba(0,0,0,.75),inset 0 0 0 1px rgba(217,179,106,.18);
+  transition:filter .55s var(--ease),box-shadow .55s var(--ease);
+  /* 纸底上压暗必须用 filter：opacity 会让半透明深卡在米白上褪成灰鬼影 */
+  filter:brightness(.50) saturate(.42) blur(.6px);
+}
+.ri.is-front{filter:none;box-shadow:0 24px 48px -20px rgba(0,0,0,.8),
+  inset 0 0 0 1px rgba(217,179,106,.5)}
+.ri__ph{width:100%;height:100%;display:grid;place-items:center;gap:4px;align-content:center;
+  background:linear-gradient(165deg,#3A2318,#1E1410);
+  font-family:var(--f-display);font-weight:700;font-size:34px;color:rgba(233,220,190,.26)}
+.ri__ph small{font-family:var(--f-sans);font-size:9px;letter-spacing:.18em;color:rgba(233,220,190,.20)}
+.ri::after{content:"";position:absolute;inset:6px;border:1px solid rgba(217,179,106,.22);
+  border-radius:6px;pointer-events:none}
+.ri img{width:100%;height:100%;object-fit:cover;object-position:50% 14%}
+.ri__ov{position:absolute;left:0;right:0;bottom:0;padding:9px 10px;
+  background:linear-gradient(180deg,rgba(20,16,15,0),rgba(20,16,15,.9) 62%)}
+.ri__n{display:block;font-family:var(--f-display);font-weight:700;font-size:14px;
+  color:#F4EDE1;letter-spacing:.04em}
+.ri__t{display:block;font-size:9.5px;letter-spacing:.1em;color:var(--brass-300);margin-top:1px}
+
+/* 姓氏索引 */
+.ridx{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:var(--s4)}
+.ridx button{appearance:none;border:1px solid var(--rule);background:var(--paper-1);cursor:pointer;
+  min-height:32px;padding:0 4px;border-radius:var(--r-sm);white-space:nowrap;
+  font-family:var(--f-sans);font-size:var(--t-label);letter-spacing:.02em;color:var(--ink-600);
+  transition:background .2s,color .2s,border-color .2s}
+.ridx button:hover{border-color:rgba(168,18,26,.34);background:var(--red-50);color:var(--red-700)}
+.ridx button.on{background:var(--red-600);border-color:var(--red-600);color:#fff}
+.ridx button.g1{color:var(--brass-600)}
+.ridx button.on.g1{color:#fff}
+@media (max-width:520px){ .ridx{grid-template-columns:repeat(3,1fr)} }
+
+/* C 位卡 */
+.cap{background:var(--paper-1);border-radius:var(--r-md);padding:clamp(18px,2.1vw,26px);
+  box-shadow:var(--sh-1);position:relative;overflow:hidden}
+.cap::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--red-600)}
+.cap__head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.cap__n{font-family:var(--f-display);font-weight:700;font-size:1.5rem;letter-spacing:.03em;color:var(--ink-900)}
+.cap__tag{font-size:var(--t-label);letter-spacing:.08em;color:var(--red-700);
+  background:var(--red-50);border-radius:var(--r-sm);padding:2px 8px}
+.cap__role{margin:var(--s2) 0 0;font-size:var(--t-xs);line-height:1.7;color:var(--ink-400)}
+.cap__bio{margin:var(--s3) 0 0;font-size:var(--t-xs);line-height:1.85;color:var(--ink-600);
+  display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.cap__stat{margin:var(--s3) 0 0;padding-top:var(--s3);border-top:1px solid var(--rule);
+  font-family:var(--f-num);font-size:var(--t-xs);letter-spacing:.02em;color:var(--brass-600)}
+.cap__foot{margin:var(--s2) 0 0;font-size:var(--t-label);color:var(--ink-400)}
+.cap__foot b{color:var(--brass-600);font-weight:400}
+
+.roster{display:flex;align-items:center;gap:var(--s2);flex-wrap:wrap;
+  margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid var(--rule);
+  font-size:var(--t-label);color:var(--ink-400)}
+.roster button{appearance:none;border:0;background:none;cursor:pointer;font-family:inherit;
+  font-size:var(--t-label);letter-spacing:.04em;color:var(--red-700);
+  padding:2px 6px;border-radius:var(--r-sm);transition:background .2s}
+.roster button:hover{background:var(--red-50)}
+.roster em{font-style:normal;font-family:var(--f-num);color:var(--brass-600);margin:0 2px}
+
+/* ── 11 · 尾页 ─────────────────────────────────────────────────────────── */
+.foot__grid{display:grid;grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);
+  gap:clamp(28px,4.5vw,64px);align-items:end}
+@media (max-width:900px){ .foot__grid{grid-template-columns:1fr;gap:var(--s5)} }
+.foot h2{font-family:var(--f-display);font-weight:700;font-size:var(--t-h2);
+  line-height:1.42;margin:0 0 var(--s3);max-width:15em}
+.foot__lead{font-size:var(--t-lead);line-height:1.9;color:var(--n-ink-2);max-width:30em;margin:0 0 var(--s5)}
+
+.qr-wrap{position:relative}
+.qr-glow{position:absolute;inset:-56px -70px -46px -70px;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(closest-side at 26% 54%,rgba(196,23,32,.62),transparent 74%),
+    radial-gradient(closest-side at 76% 46%,rgba(217,179,106,.26),transparent 76%);
+  filter:blur(46px) saturate(1.25)}
+.qr{position:relative;z-index:1;
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  gap:20px;padding:13px;border-radius:var(--r-pill);max-width:560px;
+  background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.03));
+  -webkit-backdrop-filter:blur(24px) saturate(1.6);
+          backdrop-filter:blur(24px) saturate(1.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.28),
+    inset 0 -1px 0 rgba(0,0,0,.32),
+    0 0 0 1px rgba(255,255,255,.10),
+    0 30px 60px -30px #000;
+}
+.qr__img{width:100px;height:100px;border-radius:10px;background:#fff;padding:6px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.55),0 10px 22px -10px rgba(0,0,0,.7)}
+.qr__t b{display:block;font-family:var(--f-display);font-size:var(--t-h3);font-weight:700;letter-spacing:.03em}
+.qr__t span{display:block;margin-top:3px;font-size:var(--t-label);line-height:1.65;color:var(--n-ink-3)}
+.qr__go{width:44px;height:44px;border-radius:50%;flex:none;display:grid;place-items:center;
+  background:rgba(255,255,255,.08);color:var(--brass-100);text-decoration:none;font-size:15px;
+  box-shadow:inset 0 0 0 1px rgba(217,179,106,.34);
+  transition:transform .3s var(--ease),background .3s}
+.qr__go:hover{transform:translateY(-2px);background:rgba(217,179,106,.18)}
+
+.plates__h{font-size:var(--t-label);letter-spacing:.18em;color:var(--brass-300);margin:0 0 var(--s2)}
+.plates__i{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid rgba(217,179,106,.13);
+  font-size:var(--t-xs);line-height:1.6;color:var(--n-ink-2)}
+.plates__i:first-of-type{border-top:1px solid rgba(217,179,106,.13)}
+.plates__no{font-family:var(--f-num);font-size:var(--t-label);color:var(--brass-500)}
+
+.foot__meta{margin-top:clamp(24px,3vw,40px);padding-top:var(--s4);border-top:1px solid var(--night-line);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);
+  font-size:var(--t-label);line-height:1.75;color:var(--n-ink-3)}
+.foot__meta em{display:block;font-style:normal;font-size:11px;letter-spacing:.16em;
+  color:var(--brass-500);margin-bottom:3px}
+.foot__meta a{color:var(--brass-300);text-decoration:none;border-bottom:1px solid rgba(217,179,106,.3)}
+
+.foot__bar{margin-top:var(--s4);padding-top:var(--s3);border-top:1px solid rgba(231,201,145,.1);
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s4);flex-wrap:wrap;
+  font-size:11px;letter-spacing:.05em;color:rgba(244,237,225,.26)}
+/* 署名牌：官方标识是「深字 + 橙滴」，直接压在深底上会消失。
+   给它一块纸白小牌挂着，像展厅尽头那块「主办单位」的铜牌底座。 */
+.signplate{
+  margin:clamp(20px,2.6vh,30px) 0 0;padding:15px 15px 9px;width:fit-content;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:var(--paper-1);border-radius:6px;      /* 不用纯白：深底上一块死白会抢二维码的焦点 */
+  box-shadow:0 0 0 1px rgba(217,179,106,.26),0 16px 30px -20px rgba(0,0,0,.9);
+}
+.signplate__drop{width:38px;height:auto}
+/* 三行字各自居中、各自水平：这才是「不歪」的唯一可靠做法 */
+.signplate__k{font-size:9px;line-height:1.4;letter-spacing:.3em;color:#3A322B;margin-top:3px}
+.signplate__n{font-family:var(--f-sans);font-weight:900;font-size:17px;line-height:1.25;
+  letter-spacing:.01em;color:#17120F;margin-top:1px}
+.signplate__en{font-family:var(--f-sans);font-weight:500;font-size:8px;line-height:1.4;
+  letter-spacing:.26em;color:#574E44;margin-top:2px}
+.signplate figcaption{margin-top:10px;padding-top:7px;border-top:1px solid rgba(23,18,15,.12);
+  font-size:9.5px;letter-spacing:.14em;color:#6B6055;white-space:nowrap;width:100%}
+@media (max-width:860px){
+  .foot__meta{grid-template-columns:1fr;gap:var(--s3)}
+  .qr{grid-template-columns:1fr;justify-items:center;text-align:center;
+    border-radius:var(--r-lg);padding:var(--s5) var(--s4);
+    -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4)}
+  .qr__go{display:none}
+}
+
+/* ── 12 · 矮屏 / 中屏 / 降级 ───────────────────────────────────────────── */
+/* 中间宽度：油仔退到匾额后面「探个头」，绝不压字 */
+@media (max-width:1179px){
+  .hero__grid{grid-template-columns:minmax(0,1.16fr) minmax(0,.84fr)}
+  .hero__oil{
+    /* 探出匾额列的右缘：x 要越过 plaque 右边界，y 错开到牌堆中段，
+     这样露出的是「大半只」而不是一条边 */
+    position:absolute;right:calc(var(--pad)*-0.85);top:calc(var(--nav-h) + 200px);
+    width:clamp(96px,11vw,126px);z-index:0;pointer-events:none;
+  }
+  /* 油仔提到 z-index:0 后，要保证匾额仍压在它上面。
+   ⚠ 必须排除油仔自己：否则这条会把它的 position:absolute 顶回 relative */
+  .hero__grid > *:not(.hero__oil){position:relative;z-index:1}
+  .hero__oil .oil-cap{display:none}
+  .hero__oil .oil-shadow{bottom:14%}
+}
+@media (max-width:940px){
+  .hero__grid{grid-template-columns:1fr;gap:var(--s5)}
+  .plaques{max-width:none}
+  .hero__oil{top:calc(var(--nav-h) + 4px);right:calc(var(--pad) - 18px);width:88px;opacity:.85}
+}
+@media (max-width:760px){
+  /* 手机上一屏装不下：关于 / 尾页这类内容高的屏原本被 overflow:hidden 直接切掉。
+     改为屏内纵向滚动，并改成顶对齐 —— 居中对齐在内容超高时会把顶部顶出视口。 */
+  .pane{overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;
+    /* 关键：留白必须加在滚动容器上。.pane__in 是固定高度、内容溢出盒子外，
+       它自己的 padding-bottom 不产生滚动空间 —— 名字条会一路贴到屏幕底边、
+       压住分页胶囊。pane 的 padding 会计入滚动区域，滚到底内容就停在胶囊上方。 */
+    padding-bottom:calc(56px + env(safe-area-inset-bottom))}
+  .pane__in{justify-content:flex-start;height:auto;min-height:100%;
+    padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+  /* 作品区例外：.cab 靠固定高度的 flex:1 撑满并内部自滚，不能改成 auto */
+  #works .pane__in{height:100%}
+  /* 关键：flex 列里的子块默认会被压扁（bento 的卡片因此被切字）。
+     .cab 例外 —— 它靠 flex:1 撑满剩余高度，内部自己滚。 */
+  .pane__in > *:not(.cab){flex-shrink:0}
+  /* 手机上首屏底部有一条空带，油仔蹲在那儿正好 */
+  /* 油仔站到标题区右上空带（eyebrow 行右侧）：
+     之前蹲在底部，视口一矮、首屏一可滚，它就随内容滑进荣誉牌后面被遮。
+     右上角永远和标题同屏，怎么滚都看得见。 */
+  .hero__oil{
+    display:flex;position:absolute;right:10px;top:calc(var(--nav-h) + 10px);
+    z-index:0;opacity:.96;
+  }
+  .hero__oil .oil-cap{display:none}
+  .hero__oil .oil-shadow{margin-top:2px;width:70%}
+  .hero__grid{padding-top:0}
+  .hint{display:none}
+
+}
+
+@media (max-height:820px){
+  :root{--nav-h:56px}
+  .pane__in{padding-top:calc(var(--nav-h) + 12px);padding-bottom:18px}
+  .hero__title{font-size:clamp(2.4rem,5vw,3.9rem)}
+  .hero__oil{width:clamp(128px,12vw,186px)}
+  .ring{height:clamp(220px,26vh,260px)}
+  .ri{width:112px;height:150px;margin:-75px 0 0 -56px;
+    transform:rotateY(calc(var(--i) * 36deg)) translateZ(228px)}
+  .cell__idx{font-size:88px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rig-beam,.rig-core,.lay--dust,.oil-bob,.oil-glow,.oil-shadow,.railbuddy img,.hint i{animation:none!important}
+  #rail,.ring__stage,.ser,.pane__in{transition:none!important}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
+/* ══ 13 · 手机首屏紧凑化（必须压轴：上面 max-height:820 块会反超前面的同名规则）══
+   微信内置浏览器可视高 ~760px，原版首屏溢出 103px → 一竖滚标题就被导航栏裁掉。
+   目标：660px 视口高也一屏放下，hero 不可竖滚。 */
+@media (max-width:760px){
+  .pane__in{padding-top:calc(var(--nav-h) + 4px);padding-bottom:7px}
+  .hero__grid{row-gap:14px}
+  .hero__title{font-size:clamp(2.1rem,8.6vw,2.7rem)}
+  .hero__full{font-size:11px;max-width:300px}
+  .hero__oil{width:48px;right:4px;top:calc(var(--nav-h) + 2px);z-index:-1}
+  /* 副标题缩一档并限宽 300：把右上角整块让给油仔，字再也碰不到它 */
+  .plaques{gap:8px}
+  .plaque{padding:12px 14px}
+  .plaque--lg .plaque__n{font-size:2.6rem}
+  .plaque__n{font-size:1.9rem}
+  .strip{gap:14px 0;margin-top:14px}
+  .strip div{padding-left:var(--s3)}
+  .strip div:nth-child(odd){border-left:0;padding-left:0}
+  .strip b, .strip strong{font-size:1.4rem}
+  .strip{margin-top:10px}
+  .pane__in{padding-bottom:4px}
+  .hero__grid{row-gap:8px}
+  /* 第三档：claim 两行收紧行高；极矮屏（<640）油仔让位 */
+  .hero__claim{font-size:13px;line-height:1.5}
+  .plaque__s{font-size:10px}
+  @media (max-height:639px){ .hero__oil{display:none} }
+  /* 第二档：竖向边距整体收紧（标题列边距合计 68px，砍一半） */
+  .hero__eyebrow{margin-bottom:8px}
+  .hero__title{margin-bottom:8px}
+  .hero__full{margin-bottom:8px}
+  .hero__claim{margin-bottom:12px;line-height:1.55}
+  .cta{gap:10px}
+  .plaques{gap:7px}
+  .plaque{padding:10px 12px;gap:12px}
+  .plaque__t{font-size:12.5px}
+  .plaque__s{font-size:10.5px}
+  .hero__grid{row-gap:10px}
+}
+
+</style>
 </head>
-<body>
 
-<div class="oil-layer" id="bodyBg" aria-hidden="true"></div>
-<div class="oil-veil" aria-hidden="true"></div>
+<body data-room="hero" data-tone="dark">
 
-<header class="nav" id="nav">
-  <a class="nav__brand" href="#top"><b>强国“油”我</b><i>辅导员工作室</i></a>
-  <nav class="nav__links" aria-label="主导航">
+<a class="skip" href="#top">跳到主要内容</a>
+
+<!-- ═══ 舞台：一盏灯 · 四层空气 ═══ -->
+<div id="stage" aria-hidden="true">
+  <div class="lay lay--deep"></div>
+
+  <div class="lay lay--rig">
+    <b class="rig-lamp"></b>
+    <b class="rig-beam"></b>
+    <b class="rig-core"></b>
+    <b class="rig-pool"></b>
+  </div>
+
+  <div class="lay lay--strata"></div>
+  <div class="lay lay--ticks"></div>
+  <div class="lay lay--dust"></div>
+  <div class="lay lay--grain"></div>
+  <div class="lay lay--vig"></div>
+</div>
+
+<header class="bar" id="bar">
+  <a class="bar__brand" href="#top">
+    <img class="bar__mark" src="assets/avatar.png" width="272" height="272" alt="" aria-hidden="true" />
+    <span>强国“油”我辅导员工作室</span>
+  </a>
+  <nav id="nav" aria-label="主导航">
+    <a href="#top">首页</a>
+    <a href="#honor">荣誉</a>
     <a href="#about">关于</a>
     <a href="#matrix">内容</a>
     <a href="#works">作品</a>
-    <a href="#honor">荣誉</a>
     <a href="#team">团队</a>
+    <a href="#follow">关注</a>
   </nav>
-  <button class="nav__burger" id="burger" aria-label="打开菜单" aria-expanded="false" aria-controls="drawer">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="bar__right">
+    <span class="count" id="count">01 / 07</span>
+    <button class="burger" id="burger" aria-label="打开菜单" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<div class="drawer" id="drawer" aria-hidden="true">
-  <a href="#about">关于工作室</a>
-  <a href="#matrix">内容矩阵</a>
-  <a href="#works">作品</a>
-  <a href="#honor">荣誉</a>
-  <a href="#team">团队</a>
-  <div class="drawer__foot">西南石油大学 · 石油与天然气工程学院<br />强国“油”我辅导员工作室</div>
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-hidden="true">
+  <a href="#top"><i>01</i>首页</a>
+  <a href="#honor"><i>02</i>荣誉</a>
+  <a href="#about"><i>03</i>关于工作室</a>
+  <a href="#matrix"><i>04</i>内容矩阵</a>
+  <a href="#works"><i>05</i>作品归档</a>
+  <a href="#team"><i>06</i>团队</a>
+  <a href="#follow"><i>07</i>关注我们</a>
 </div>
 
-<!-- ═══ 首屏 ═══ -->
-<section class="hero" id="top">
-  <div id="heroBg"></div>
-  <div class="veil--red"></div>
-  <div class="hero__inner">
-    <div class="hero__col">
-      <img class="logo" src="./images/avatar.png" alt="强国“油”我辅导员工作室标识" width="96" height="96" />
-      <p class="eyebrow">石油与天然气工程学院</p>
-      <h1>强国<span class="q">“油”</span>我</h1>
-      <p class="hero__sub">辅导员工作室</p>
-      <div class="hero__rule"></div>
-      <p class="hero__claim">党建引领，立德树人</p>
-      <div class="stats">
-        <div><div class="stat__n">3,500<span>+</span></div><div class="stat__k">关注用户</div></div>
-        <div><div class="stat__n">290<span>+</span></div><div class="stat__k">原创内容</div></div>
-        <div><div class="stat__n">80<span>+</span></div><div class="stat__k">红微课讲堂（期）</div></div>
-        <div><div class="stat__n">8<span>次/周</span></div><div class="stat__k">先锋计划授课</div></div>
+<div class="dots" id="dots" aria-label="板块导航"></div>
+<div class="mbar" aria-hidden="true"><i id="mbarFill"></i></div>
+<div class="mdots" id="mdots" role="tablist" aria-label="板块快速跳转"></div>
+<p class="vch" id="vch" aria-hidden="true">序 · 深地取光</p>
+<div class="railbuddy" id="railBuddy" aria-hidden="true"><img src="assets/youzai-240.png" width="240" height="256" alt=""></div>
+
+<div id="rail">
+
+<!-- ══ 01 首页 ══ -->
+<section class="pane" id="top" data-room="hero" data-tone="dark">
+  <div class="pane__in">
+    <div class="hero">
+      <div class="hero__grid">
+        <div>
+          <p class="hero__eyebrow">西南石油大学 · 石油与天然气工程学院</p>
+          <h1 class="hero__title">强国<span class="q"><i>“</i>油<i>”</i></span>我</h1>
+          <p class="hero__full">辅导员工作室｜全国党建工作样板支部培育单位</p>
+          <p class="hero__claim">把国家能源战略这件大事，落到一个青年党员愿不愿意来、来了能不能长的这件小事上。</p>
+          <div class="cta">
+            <a class="btn btn--solid" href="#follow">关注公众号 <span aria-hidden="true">›</span></a>
+            <a class="btn btn--ghost" href="#about">看育人体系</a>
+          </div>
+        </div>
+
+        <div class="plaques" aria-label="核心荣誉">
+          <div class="plaque plaque--lg">
+            <div class="plaque__n">6<em>项</em></div>
+            <div><span class="plaque__t">国家级优秀作品</span><span class="plaque__s">第七届 2 项 · 第八届 4 项</span></div>
+          </div>
+          <div class="plaque">
+            <div class="plaque__n">金奖</div>
+            <div><span class="plaque__t">四川省国际大学生创新大赛</span><span class="plaque__s">红色筑梦之旅赛道 · 创业组</span></div>
+          </div>
+          <div class="plaque">
+            <div class="plaque__n">样板</div>
+            <div><span class="plaque__t">全国党建工作样板支部</span><span class="plaque__s">石工院学生第十三党支部</span></div>
+          </div>
+        </div>
+
+        <!-- 油仔：悬在光里，不站地上 -->
+        <figure class="hero__oil">
+          <span class="oil-glow" aria-hidden="true"></span>
+          <span class="oil-shadow" aria-hidden="true"></span>
+          <span class="oil-bob">
+            <img src="assets/youzai-480.png" width="480" height="513"
+                 alt="油仔 —— 强国“油”我辅导员工作室官方吉祥物" />
+          </span>
+          <figcaption class="oil-cap"><b>油仔</b><i>Official Mascot</i></figcaption>
+        </figure>
       </div>
-      <div class="cta">
-        <a class="btn" href="#follow">关注公众号 <span aria-hidden="true">›</span></a>
-        <span class="cta__hint">报名与期次查询在公众号内完成</span>
+
+      <div class="strip">
+        <div><b>3,500<em>+</em></b><span>公众号关注用户</span></div>
+        <div><b>126<em>篇</em></b><span>已归档原创图文</span></div>
+        <div><b>80<em>期</em></b><span>红微课讲堂</span></div>
+        <div><b>6,000<em>人次</em></b><span>先锋计划累计参与</span></div>
       </div>
+
+      <p class="hint"><i aria-hidden="true"></i>滚动 / ← → 横向推进</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ 静默带（首屏 → 正文） ═══ -->
-<div class="seam seam--after-hero" aria-hidden="true">
-  <div class="seam__in">
-    <span class="seam__rule"></span>
-    <span class="seam__txt">旗帜之下，是日常</span>
-    <span class="seam__rule"></span>
-  </div>
-</div>
-
-<main>
-
-<!-- ═══ 关于（结构化重写） ═══ -->
-<section class="sec" id="about">
-  <div class="sec__in">
-    <p class="sec__label">01 &nbsp;关于工作室</p>
-    <h2>一个平台，三条聚焦，一套可复制的育人打法。</h2>
-
-    <div class="about-top">
+<!-- ══ 02 荣誉 ══ -->
+<section class="pane pane--paper" id="honor" data-room="honor" data-tone="light">
+  <div class="pane__in">
+    <p class="eyebrow"><span>01</span>荣誉与认可</p>
+    <h2 class="sec">连续两届，从五万七千四百九十九件作品里被选中。</h2>
+    <div class="wall">
       <div>
-        <p class="about-lead">
-          强国“油”我辅导员工作室由石油与天然气工程学院牵头建设，
-          以<strong>党建引领、立德树人</strong>为主线，
-          把党员教育从“完成规定动作”做成“学生愿意主动参与的事”。
-          工作室不做单点活动，而是把课程、实践、传播、评价串成一条线，
-          让经验沉淀为可复用的工作模式。
-        </p>
-
-        <div class="issues">
-          <div class="issue"><i>01</i><div><b>党员身份意识</b><span>解决“我是谁、为什么入党”的认知问题</span></div></div>
-          <div class="issue"><i>02</i><div><b>党员发展意识</b><span>解决“怎么成长、如何评价”的过程问题</span></div></div>
-          <div class="issue"><i>03</i><div><b>党员教育活动</b><span>解决“活动有没有人愿意来”的吸引力问题</span></div></div>
+        <div class="board">
+          <div class="plaque board__hero">
+            <div class="plaque__n">57,499</div>
+            <div>
+              <p class="board__h">第八届全国大学生网络文化节作品总量</p>
+              <p class="board__d">31 个省（区、市）及新疆生产建设兵团报送；工作室 4 项入选，其中推广作品 2 项为全校唯二。</p>
+            </div>
+          </div>
+          <div class="plaque">
+            <div class="plaque__n">4<em>项</em></div>
+            <p class="board__h">第八届入选</p>
+            <p class="board__d">推广 2 项 · 展播 2 项</p>
+          </div>
+          <div class="plaque">
+            <div class="plaque__n">2<em>项</em></div>
+            <p class="board__h">第七届入选</p>
+            <p class="board__d">含全校唯一入选微课</p>
+          </div>
+        </div>
+        <div class="ruler">
+          <p class="ruler__h">发展刻度</p>
+          <div class="ruler__track">
+            <div class="ruler__i"><div class="ruler__y">2024.06</div><div class="ruler__t">首篇推文发布</div></div>
+            <div class="ruler__i"><div class="ruler__y">2024.09</div><div class="ruler__t">先锋计划开办</div></div>
+            <div class="ruler__i"><div class="ruler__y">2025.04</div><div class="ruler__t">油气青年说开讲</div></div>
+            <div class="ruler__i"><div class="ruler__y">2025.06</div><div class="ruler__t">两优一先展播</div></div>
+            <div class="ruler__i"><div class="ruler__y">2026.02</div><div class="ruler__t">首个年度盘点</div></div>
+            <div class="ruler__i"><div class="ruler__y">2026.09</div><div class="ruler__t">第八届 4 项入选</div></div>
+          </div>
         </div>
       </div>
-
-      <div class="sys">
-        <div class="sys__h">工作体系</div>
-        <div class="sys__row"><div class="sys__k">内核</div><div class="sys__v">传承「石油精神」，坚定「能源报国」志向</div></div>
-        <div class="sys__row"><div class="sys__k">机制</div><div class="sys__v">「带」机制 —— 党建带团建，团建促党建</div></div>
-        <div class="sys__row"><div class="sys__k">路径</div><div class="sys__v">打造一个阵地、搭建一个平台、形成一批成果</div></div>
-        <div class="sys__row"><div class="sys__k">方法</div><div class="sys__v">积分管理 —— 党员发展从定性化转为定量化</div></div>
-        <div class="sys__motto">
-          <div class="sys__mt">民族柱石 · 国脉钜工</div>
-          <div class="sys__mk">依托学院院训</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="layout-grid">
-      <article class="lg lg--key">
-        <div class="lg__no">ONE</div>
-        <div class="lg__t">一引领</div>
-        <div class="lg__en">One Guidance</div>
-        <ul>
-          <li>以国家号召为引领，服务党和国家重大战略布局</li>
-          <li>培养德才兼备、立志为中国特色社会主义事业奋斗终身的“能源栋梁、强国先锋”</li>
-        </ul>
-      </article>
-
-      <article class="lg">
-        <div class="lg__no">TWO</div>
-        <div class="lg__t">两浸润</div>
-        <div class="lg__en">Two Immersions</div>
-        <ul>
-          <li><b>横向</b>：学术育人、实践育人、文化育人、服务育人“四位一体”的第二课堂体系</li>
-          <li><b>纵向</b>：“全生涯 + 关键节点”思政第一议程计划</li>
-        </ul>
-      </article>
-
-      <article class="lg">
-        <div class="lg__no">THREE</div>
-        <div class="lg__t">三个一体化</div>
-        <div class="lg__en">Three Integrations</div>
-        <ul>
-          <li>学校与社会育人资源一体化融合</li>
-          <li>本硕博育人链条一体化设计</li>
-          <li>教管辅校友育人主体一体化行动</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="crew-mode">
-      <div class="cm"><div class="cm__k">统筹</div><div class="cm__v">主持人负责选题策划、内容把关与节奏调度</div></div>
-      <div class="cm"><div class="cm__k">指导</div><div class="cm__v">3 位顾问分别对接党建、思政与心理方向</div></div>
-      <div class="cm"><div class="cm__k">分工</div><div class="cm__v">6 位成员按学院与岗位分线推进课程、活动与传播</div></div>
-      <div class="cm"><div class="cm__k">协作</div><div class="cm__v">思政 / 工学 / 经济学多学科互补，把“单兵作战”改为“团队作战”</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 内容矩阵 ═══ -->
-<section class="sec" id="matrix">
-  <div class="sec__in">
-    <p class="sec__label">02 &nbsp;内容矩阵</p>
-    <h2>三条内容线，撑起工作室全部输出的骨架。</h2>
-
-    <div class="cols">
-      <article class="card card--key">
-        <div class="card__no">01</div>
-        <h3>先锋计划</h3>
-        <div class="card__en">Pioneer Program</div>
-        <ul>
-          <li><i>1+X</i><span>1 = 思想政治素质；X = 学习、实践、沟通、演讲、创新</span></li>
-          <li><i>80+</i><span>红微课讲堂</span></li>
-          <li><i>70+</i><span>梦溪读书会</span></li>
-          <li><i>35+</i><span>科学家精神</span></li>
-          <li><i>8+</i><span>油气青年说</span></li>
-          <li><i>8 次</i><span>每周至少 8 次，各支部轮流牵头、校企地师资</span></li>
-          <li><i>6,000+</i><span>累计参与人次</span></li>
-          <li><i>报名</i><span>通过公众号底部菜单进入</span></li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <div class="card__no">02</div>
-        <h3>先锋典范</h3>
-        <div class="card__en">Pioneer Models</div>
-        <ul>
-          <li><i>20+</i><span>「两优一先」展播</span></li>
-          <li><i>方法</i><span>挖掘 — 采访 — 传播，一体化</span></li>
-          <li><i>一人</i><span>一故事；一事一典型</span></li>
-          <li><i>2025</i><span>表彰 14 名优秀学生共产党员、11 名优秀学生党务工作者</span></li>
-          <li><i></i><span>4 个优秀学生党支部</span></li>
-        </ul>
-      </article>
-
-      <article class="card card--lit">
-        <div class="card__no">03</div>
-        <h3>拾光者说</h3>
-        <div class="card__en">Stories of Light</div>
-        <ul>
-          <li><i>8 位</i><span>我的教育故事</span></li>
-          <li><i>①–⑦</i><span>年终总结</span></li>
-          <li><i>2,428</i><span>单篇阅读，全站最高</span></li>
-          <li><i>树洞</i><span>暖到心坎的辅导员树洞</span></li>
-        </ul>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 作品（按类型分区） ═══ -->
-<section class="sec" id="works">
-  <div class="sec__in">
-    <p class="sec__label">03 &nbsp;作品</p>
-    <h2>镜头记录现场，文字留下心事。</h2>
-
-    <!-- 视频 -->
-    <div class="group-h"><h3>视频作品</h3><span class="n">5 支</span></div>
-    <div class="videos">
-      <a class="vcard vcard--wide" href="https://mp.weixin.qq.com/s/P3IvJe2yTw8SepWvhanNwQ" target="_blank" rel="noopener">
-        <div class="vcard__fig">
-          <span class="chip">微课</span>
-          <img loading="lazy" src="./images/cover-01.webp" alt="保障国家能源安全，征程万里新篇待续" />
-          <div class="vcard__play"><em>▶</em>观看</div>
-        </div>
-        <div class="vcard__body">
-          <div class="vcard__t">保障国家能源安全，征程万里“新”篇待续</div>
-          <div class="vcard__m">第八届全国优秀展播作品 · 5′57″</div>
-        </div>
-      </a>
-
-      <a class="vcard" href="https://mp.weixin.qq.com/s/qmn3tYrHonul-cHFvWZnyQ" target="_blank" rel="noopener">
-        <div class="vcard__fig">
-          <span class="chip">影像集</span>
-          <img loading="lazy" src="./images/cover-02.webp" alt="我与寝室合个影" />
-          <div class="vcard__play"><em>▶</em>观看</div>
-        </div>
-        <div class="vcard__body">
-          <div class="vcard__t">我与寝室合个影</div>
-          <div class="vcard__m">47 个寝室 · 272 人</div>
-        </div>
-      </a>
-
-      <a class="vcard" href="https://mp.weixin.qq.com/s/j8dHc4KogQrvNzWUZZzW1w" target="_blank" rel="noopener">
-        <div class="vcard__fig">
-          <span class="chip">微视频</span>
-          <img loading="lazy" src="./images/cover-03.webp" alt="这首歌一唱就是一辈子" />
-          <div class="vcard__play"><em>▶</em>观看</div>
-        </div>
-        <div class="vcard__body">
-          <div class="vcard__t">这首歌一唱就是一辈子</div>
-          <div class="vcard__m">微视频</div>
-        </div>
-      </a>
-
-      <a class="vcard vcard--portrait" href="https://mp.weixin.qq.com/s/ZwdhXrG8g0Xpyp60xITM5A" target="_blank" rel="noopener">
-        <div class="vcard__fig">
-          <span class="chip">纪实</span>
-          <img loading="lazy" src="./images/cover-04.webp" alt="辅导员带你走进海上平台" />
-          <div class="vcard__play"><em>▶</em>观看</div>
-        </div>
-        <div class="vcard__body">
-          <div class="vcard__t">瞧～辅导员带你走进海上平台</div>
-          <div class="vcard__m">纪实</div>
-        </div>
-      </a>
-
-      <a class="vcard" href="https://mp.weixin.qq.com/s/-2xAhbSQRH6ivEUwa5uVJQ" target="_blank" rel="noopener">
-        <div class="vcard__fig">
-          <span class="chip">毕业 MV</span>
-          <img loading="lazy" src="./images/cover-05.webp" alt="跃入两深一非的星辰大海" />
-          <div class="vcard__play"><em>▶</em>观看</div>
-        </div>
-        <div class="vcard__body">
-          <div class="vcard__t">跃入“两深一非”的星辰大海</div>
-          <div class="vcard__m">2026 届毕业 MV</div>
-        </div>
-      </a>
-    </div>
-
-    <!-- 图文 -->
-    <div class="group-h"><h3>图文作品</h3><span class="n">8 篇</span></div>
-    <div class="posts">
-      <a class="post" href="https://mp.weixin.qq.com/s/TtsK2tEEWphEqNFh_1zhew" target="_blank" rel="noopener">
-        <span class="post__tag">人物特写</span>
-        <span class="post__t">我的教育故事｜兰冰芯：师生一场 守候一生</span>
-        <span class="post__meta">2025-10-09 · 阅读 2,428</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/V-_foQ2pT-2OzaW_uMrTCQ" target="_blank" rel="noopener">
-        <span class="post__tag">迎新服务</span>
-        <span class="post__t">【迎新季①】石工院班导生已就位，快来认领你的新生重要信息</span>
-        <span class="post__meta">2026-08-08 · 阅读 1,589</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/rX-2-IfsMNxUfuiSTaQEpw" target="_blank" rel="noopener">
-        <span class="post__tag">品牌起点</span>
-        <span class="post__t">工作室来袭｜强国“油”我辅导员工作室</span>
-        <span class="post__meta">2024-06-07 · 阅读 1,221</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/-NNX229kV5vxINQVJqnrmQ" target="_blank" rel="noopener">
-        <span class="post__tag">年度盘点</span>
-        <span class="post__t">2025 年终总结｜①兰冰芯：立足三个身份，让学生工作从指间到心间</span>
-        <span class="post__meta">2026-01-25 · 阅读 1,115</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/9ETqNg1BCkH4SSVNofTkeg" target="_blank" rel="noopener">
-        <span class="post__tag">实用攻略</span>
-        <span class="post__t">强国“油”我小课堂｜@2024级新生，请查收入党申请书的撰写攻略</span>
-        <span class="post__meta">2024-09-11 · 阅读 894</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/SJWHdsZrN5IAZuLBlukSPA" target="_blank" rel="noopener">
-        <span class="post__tag">人物特写</span>
-        <span class="post__t">我的教育故事｜肖雨桐：用更专业更有温度的方式陪伴学生成长</span>
-        <span class="post__meta">2025-10-24 · 阅读 723</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/M9l25zB9nweyxE-AETZQPw" target="_blank" rel="noopener">
-        <span class="post__tag">人物特写</span>
-        <span class="post__t">我的教育故事｜何敏：姐随时等你回来</span>
-        <span class="post__meta">2025-11-20 · 阅读 691</span>
-        <span class="post__arrow">↗</span>
-      </a>
-      <a class="post" href="https://mp.weixin.qq.com/s/mxpsPx_a2Xw2wmf8TUktIg" target="_blank" rel="noopener">
-        <span class="post__tag">榜样展播</span>
-        <span class="post__t">“两优一先”展风华·榜样引领启新程｜①优秀学生党务工作者-彭思瑞事迹展播</span>
-        <span class="post__meta">2025-06-30 · 阅读 482</span>
-        <span class="post__arrow">↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 荣誉 ═══ -->
-<section class="sec" id="honor">
-  <div class="sec__in">
-    <p class="sec__label">04 &nbsp;荣誉与认可</p>
-    <h2>连续两届，从全国 57,499 件作品里被选中。</h2>
-
-    <div class="honors">
-      <div class="honor">
-        <div class="honor__k">国家级 · 连续两届</div>
-        <div class="honor__n">6<span>项</span></div>
-        <div class="honor__d">第八届 4 项（推广 2 项全校唯二、展播 2 项）；第七届 2 项，含全校唯一入选微课</div>
-      </div>
-      <div class="honor">
-        <div class="honor__k">国家级 · 第八届</div>
-        <div class="honor__n">4<span>项</span></div>
-        <div class="honor__d">从全国 <b class="hl">57,499</b> 件、31 个省（区、市）及新疆生产建设兵团报送作品中脱颖而出</div>
-      </div>
-      <div class="honor">
-        <div class="honor__k">省级</div>
-        <div class="honor__n">金奖</div>
-        <div class="honor__d">「建行杯」四川省国际大学生创新大赛（2024）红色筑梦之旅赛道创业组</div>
-      </div>
-      <div class="honor">
-        <div class="honor__k">支部</div>
-        <div class="honor__n">样板支部</div>
-        <div class="honor__d">石工院学生第十三党支部获批第四批全国党建工作样板支部</div>
-      </div>
-    </div>
-
-    <div class="influence">
-      <div class="inf"><i>对外分享</i><span>受邀在四川省委高校党委组织部部长培训班、四川师范大学、西南科技大学、成都大学等分享经验 8 次</span></div>
-      <div class="inf"><i>省级党课</i><span>2024 年作为全省唯一高校代表主讲四川党建《党课星期天》，被省委组织部收录进《基层优秀党课报告》</span></div>
-      <div class="inf"><i>校内影响</i><span>校党委书记张烈辉为石工院学生第十三党支部讲授「能源报国 强国有我」专题党课</span></div>
-    </div>
-
-    <div class="tl">
-      <div class="tl__h">时间线</div>
-      <div class="tl__list">
-        <div class="tl__item"><div class="tl__y">2024.06</div><div class="tl__t">公众号发出第一篇《工作室来袭》</div></div>
-        <div class="tl__item"><div class="tl__y">2024.09</div><div class="tl__t">先锋计划「1+X」开办</div></div>
-        <div class="tl__item"><div class="tl__y">2025.04</div><div class="tl__t">「油气青年说」开办</div></div>
-        <div class="tl__item"><div class="tl__y">2025.06</div><div class="tl__t">「两优一先」展播启动</div></div>
-        <div class="tl__item"><div class="tl__y">2026.02</div><div class="tl__t">首个年度盘点发布</div></div>
-        <div class="tl__item"><div class="tl__y">2026.09</div><div class="tl__t">第八届 4 项作品入选</div></div>
+      <div class="record">
+        <p class="record__h">荣誉报道 · 点标题看原文</p>
+        <a href="https://mp.weixin.qq.com/s/zPIYfWP3VfeCS37Zw2Otqw" target="_blank" rel="noopener">
+          <span class="record__no">01</span>
+          <span class="record__t">再获佳绩｜工作室荣获全国优秀推广作品 2 项、优秀展播作品 2 项</span>
+          <span class="record__d">2026.09.28</span>
+        </a>
+        <a href="https://mp.weixin.qq.com/s/A_vLJJAU3igvnZE_byb1Cg" target="_blank" rel="noopener">
+          <span class="record__no">02</span>
+          <span class="record__t">工作室喜讯｜2 位老师在第七届全国大学生网络文化节获奖</span>
+          <span class="record__d">2024.09.26</span>
+        </a>
+        <a href="https://mp.weixin.qq.com/s/Zc6AD5HAqC7A6NDKQjXB1w" target="_blank" rel="noopener">
+          <span class="record__no">03</span>
+          <span class="record__t">省赛金奖！指导项目在四川省国际大学生创新大赛斩获佳绩</span>
+          <span class="record__d">2024.08.12</span>
+        </a>
+        <a href="https://mp.weixin.qq.com/s/LDJSDuvbmqnrnuDi0RmNYA" target="_blank" rel="noopener">
+          <span class="record__no">04</span>
+          <span class="record__t">主持人党课上线「党课星期天」，被省委组织部收录</span>
+          <span class="record__d">2024.11.08</span>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 团队 ═══ -->
-<section class="sec" id="team">
-  <div class="sec__in">
-    <p class="sec__label">05 &nbsp;团队</p>
-    <h2>1 位主持人、3 位顾问、6 位成员，共 10 位。</h2>
-    <p class="sec__sub">学科背景覆盖思想政治、工学、经济学，专业互补、梯度合理。</p>
-
-    <div class="ring" id="teamRing" hidden><div class="ring__cc"></div></div>
-    <div class="caps" id="teamCap" hidden>
-      <div class="caps__head">
-        <span class="caps__n"></span><span class="caps__t"></span><span class="caps__r"></span>
-      </div>
-      <p class="caps__b"></p>
-      <div class="caps__c"></div>
-    </div>
-
-    <div class="mcards" id="teamGrid">
-      <article class="mcard mcard--host" data-id="lanbingxin" data-role="主持人">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-lanbingxin.webp" alt="兰冰芯" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">兰冰芯</span><span class="mcard__tag">主持人</span></div>
-          <div class="mcard__role">中共党员 · 硕士研究生 · 讲师</div>
-        <p class="mcard__bio">荣获四川省第七届辅导员年度人物（提名）、校优秀共产党员、第二届教职工飞翔奖·良师益友奖（入围奖）。优秀事迹《以“爱”筑魂，以“芯”育人，编写学生成长“梦想书”》入编教育部“非凡十年·我的教育故事”。2024 年作为全省唯一高校代表主讲四川党建《党课星期天》，被四川省委组织部收录进《基层优秀党课报告》。</p>
-        <div class="mcard__stat">主持 E 级项目 11 项 · 发表论文 14 篇 · 参编专著 3 本 · 对外分享 8 次</div>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
+<!-- ══ 03 关于 ══ -->
+<section class="pane pane--paper" id="about" data-room="about" data-tone="light">
+  <div class="pane__in">
+    <p class="eyebrow"><span>02</span>关于工作室</p>
+    <h2 class="sec">一个平台，三条聚焦，一套可复制的育人打法。</h2>
+    <div class="bento">
+      <article class="cell cell--a">
+        <div class="cell__idx" aria-hidden="true">01</div>
+        <p class="cell__k">平台介绍</p>
+        <p class="txt">强国“油”我辅导员工作室由石油与天然气工程学院牵头建设，以<strong>党建引领、立德树人</strong>为主线，把党员教育从「完成规定动作」做成「学生愿意主动参与的事」。</p>
+        <p class="note">工作室不做单点活动，而是把课程、实践、传播、评价串成一条线，让经验沉淀为可复用的工作模式。</p>
+      </article>
+      <article class="cell cell--b">
+        <div class="cell__idx" aria-hidden="true">02</div>
+        <p class="cell__k">工作体系</p>
+        <div class="sys">
+          <div class="sys__r"><span class="sys__k">内核</span><span class="sys__v">传承石油精神，坚定能源报国志向</span></div>
+          <div class="sys__r"><span class="sys__k">机制</span><span class="sys__v">「带」机制 —— 党建带团建，团建促党建</span></div>
+          <div class="sys__r"><span class="sys__k">路径</span><span class="sys__v">一个阵地、一个平台、一批成果</span></div>
+          <div class="sys__r"><span class="sys__k">方法</span><span class="sys__v">积分管理 —— 党员发展从定性转定量</span></div>
         </div>
       </article>
-      <article class="mcard mcard--adv" data-id="zhangfeng" data-role="顾问">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/advisor-zhangfeng.webp" alt="张凤" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">张凤</span><span class="mcard__tag">顾问</span></div>
-          <div class="mcard__role">西南石油大学党建办公室主任<br />党委组织部副部长</div>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
+      <article class="cell cell--c">
+        <div class="seal" aria-label="民族柱石 国脉钜工">民族柱石<br />国脉钜工</div>
+        <p class="seal__k">依托学院院训</p>
+      </article>
+      <article class="cell cell--d">
+        <div class="cell__idx" aria-hidden="true">03</div>
+        <p class="cell__k">三条聚焦</p>
+        <div class="focus">
+          <div class="focus__i"><span class="focus__n">01</span><div><b class="focus__b">党员身份意识</b><span class="focus__d">解决「我是谁、为什么入党」的认知问题</span></div></div>
+          <div class="focus__i"><span class="focus__n">02</span><div><b class="focus__b">党员发展意识</b><span class="focus__d">解决「怎么成长、如何评价」的过程问题</span></div></div>
+          <div class="focus__i"><span class="focus__n">03</span><div><b class="focus__b">党员教育活动</b><span class="focus__d">解决「活动有没有人愿意来」的吸引力问题</span></div></div>
         </div>
       </article>
-      <article class="mcard mcard--adv" data-id="qianguang" data-role="顾问">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/advisor-qianguang.webp" alt="钱广" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">钱广</span><span class="mcard__tag">顾问</span></div>
-          <div class="mcard__role">石油与天然气工程学院<br />党委副书记、纪委书记</div>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard mcard--adv" data-id="shuxiaoli" data-role="顾问">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/advisor-shuxiaoli.webp" alt="舒小立" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">舒小立</span><span class="mcard__tag">顾问</span></div>
-          <div class="mcard__role">西南石油大学<br />心理发展与服务中心副主任</div>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard" data-id="yuechenjun" data-role="成员">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-yuechenjun.webp" alt="岳陈军" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">岳陈军</span><span class="mcard__tag">成员</span></div>
-          <div class="mcard__role">党委学生工作部（处）大学生网络文化建设办公室主任</div>
-        <p class="mcard__bio">中国高等教育学会思想政治教育分会会员、四川省网络文化协会专家会员。获全国及四川省“优秀易班指导教师”，案例获全国“优秀易班共建案例”。</p>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard" data-id="zhangjiabin" data-role="成员">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-zhangjiabin.webp" alt="张家彬" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">张家彬</span><span class="mcard__tag">成员</span></div>
-          <div class="mcard__role">中共党员 · 硕士研究生 · 讲师</div>
-        <p class="mcard__bio">中国石油工程设计大赛“全国优秀指导教师”，连续 5 年获评“全国先进个人”，四川省第二十八届新进教师培训班“优秀班干部”。</p>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard" data-id="xieshixue" data-role="成员">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-xieshixue.webp" alt="谢诗雪" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">谢诗雪</span><span class="mcard__tag">成员</span></div>
-          <div class="mcard__role">中共党员 · 硕士研究生 · 助教</div>
-        <p class="mcard__bio">中国石油工程设计大赛先进个人、创新创业工作先进个人、职业生涯发展大赛优秀指导老师、暑期社会实践优秀指导教师。</p>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard" data-id="xiaoyutong" data-role="成员">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-xiaoyutong.webp" alt="肖雨桐" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">肖雨桐</span><span class="mcard__tag">成员</span></div>
-          <div class="mcard__role">中共党员 · 教育学硕士 · GCDF 全球职业规划师</div>
-        <p class="mcard__bio">2021 年毕业于华中师范大学教育经济与管理专业。BCF 生涯规划师。研究方向：思想政治教育、职业生涯规划与就业指导、心理健康教育。</p>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard" data-id="liaojunyi" data-role="成员">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-liaojunyi.webp" alt="廖俊怡" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">廖俊怡</span><span class="mcard__tag">成员</span></div>
-          <div class="mcard__role">中共党员 · 硕士研究生 · 助教</div>
-        <p class="mcard__bio">计算机与软件学院研究生辅导员。热爱辅导员工作，把“为党育人”放在首要位置：辅学生成长、导学生方向、员学生梦想。</p>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
-        </div>
-      </article>
-      <article class="mcard" data-id="chengmeirong" data-role="成员">
-        <div class="mcard__fig">
-          <img loading="lazy" src="./images/m-chengmeirong.webp" alt="程美容" />
-        </div>
-        <div class="mcard__body">
-          <div class="mcard__head"><span class="mcard__n">程美容</span><span class="mcard__tag">成员</span></div>
-          <div class="mcard__role">中共党员 · 硕士研究生 · 助教</div>
-        <p class="mcard__bio">获校“高校网络教育优秀作品征集大赛”一等奖、职业发展与就业指导优秀案例二等奖；校职业规划大赛优秀指导教师、新闻舆论工作先进个人。</p>
-          <div class="mcard__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</div>
+      <article class="cell cell--e">
+        <div class="cell__idx" aria-hidden="true">04</div>
+        <p class="cell__k">理念与方法</p>
+        <div class="idea">
+          <div class="idea__i"><b>一引领</b><i>One</i><ul><li>以国家号召为引领，服务重大战略布局</li><li>培养立志奋斗终身的能源栋梁</li></ul></div>
+          <div class="idea__i"><b>两浸润</b><i>Two</i><ul><li>横向：四位一体第二课堂体系</li><li>纵向：全生涯思政第一议程</li></ul></div>
+          <div class="idea__i"><b>三一体化</b><i>Three</i><ul><li>校社育人资源一体化融合</li><li>本硕博育人链条一体化设计</li><li>教管辅校友一体化行动</li></ul></div>
         </div>
       </article>
     </div>
   </div>
 </section>
 
-</main>
-
-<!-- ═══ 静默带（正文 → 页脚） ═══ -->
-<div class="seam seam--before-foot" aria-hidden="true">
-  <div class="seam__in">
-    <span class="seam__rule"></span>
-    <span class="seam__txt">日常之上，还是那面旗</span>
-    <span class="seam__rule"></span>
+<!-- ══ 04 内容矩阵 ══ -->
+<section class="pane pane--paper" id="matrix" data-room="matrix" data-tone="light">
+  <div class="pane__in">
+    <p class="eyebrow"><span>03</span>内容矩阵</p>
+    <h2 class="sec">三条内容线，撑起工作室全部输出的骨架。</h2>
+    <div class="mx">
+      <article class="mx__c">
+        <div class="mx__n" aria-hidden="true">01</div>
+        <h3 class="mx__t">先锋计划</h3>
+        <p class="mx__en">Pioneer Program</p>
+        <ul class="mx__l">
+          <li><b>1 + X</b><span>1 = 思想政治素质；X = 学习、实践、沟通、演讲、创新</span></li>
+          <li><b>80+</b><span>红微课讲堂</span></li>
+          <li><b>70+</b><span>梦溪读书会</span></li>
+          <li><b>35+</b><span>科学家精神</span></li>
+          <li><b>8 次/周</b><span>各支部轮流牵头、校企地师资</span></li>
+          <li><b>6,000+</b><span>累计参与人次</span></li>
+        </ul>
+      </article>
+      <article class="mx__c">
+        <div class="mx__n" aria-hidden="true">02</div>
+        <h3 class="mx__t">先锋典范</h3>
+        <p class="mx__en">Pioneer Models</p>
+        <ul class="mx__l">
+          <li><b>20+</b><span>「两优一先」展播</span></li>
+          <li><b>方法</b><span>挖掘 — 采访 — 传播，一体化</span></li>
+          <li><b>一人</b><span>一故事；一事一典型</span></li>
+          <li><b>2025</b><span>表彰 14 名优秀学生共产党员、11 名优秀学生党务工作者</span></li>
+          <li><b>支部</b><span>4 个优秀学生党支部</span></li>
+        </ul>
+      </article>
+      <article class="mx__c">
+        <div class="mx__n" aria-hidden="true">03</div>
+        <h3 class="mx__t">拾光者说</h3>
+        <p class="mx__en">Stories of Light</p>
+        <ul class="mx__l">
+          <li><b>8 位</b><span>我的教育故事</span></li>
+          <li><b>①–⑦</b><span>年终总结</span></li>
+          <li><b>2,428</b><span>单篇阅读，全站最高</span></li>
+          <li><b>树洞</b><span>暖到心坎的辅导员树洞</span></li>
+        </ul>
+      </article>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ═══ 页脚 ═══ -->
-<footer class="foot" id="follow">
-  <div id="footBg"></div>
-  <div class="veil--red"></div>
-  <div class="foot__in">
-    <h2>故事还在继续，<br />下一期在公众号等你。</h2>
-    <p class="foot__lead">所有栏目、期次与报名入口都在公众号底部菜单里，扫码关注后即可查看全部内容与当期报名。</p>
+<!-- ══ 05 作品档案柜 ══ -->
+<section class="pane pane--paper" id="works" data-room="works" data-tone="light">
+  <div class="pane__in">
+    <p class="eyebrow"><span>04</span>作品归档</p>
+    <h2 class="sec">镜头记录现场，文字留下心事。</h2>
+    <div class="cab" id="cab" data-view="index">
+      <div class="cab__bar">
+        <div class="tabs" role="tablist" aria-label="作品类型">
+          <button type="button" role="tab" id="tabArt" aria-selected="true" aria-controls="cabView" class="on" data-k="art">图文<i>15</i></button>
+          <button type="button" role="tab" id="tabVid" aria-selected="false" aria-controls="cabView" data-k="vid">影像<i>6</i></button>
+        </div>
+        <p class="cab__meta" id="cabMeta">15 个系列 · <b>126</b> 篇 · 点系列看全部条目</p>
+      </div>
+      <div class="cab__view" id="cabView" role="tabpanel" aria-labelledby="tabArt">
+        <div class="cab__grid" id="cabGrid"></div>
+        <div class="cab__list">
+          <div class="cab__head">
+            <button class="cab__back" id="cabBack" type="button" aria-label="返回系列总览">←</button>
+            <h3 class="cab__hn" id="cabHn"></h3>
+            <span class="cab__hc" id="cabHc"></span>
+          </div>
+          <ol class="cab__items" id="cabItems"></ol>
+          <div class="cab__foot">
+            <span id="cabFoot">条目点开即跳公众号原文，站内不内嵌阅读器</span>
+            <a href="#follow">看全部 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="foot__grid">
+<!-- ══ 06 团队 ══ -->
+<section class="pane pane--paper" id="team" data-room="team" data-tone="light">
+  <div class="pane__in">
+    <p class="eyebrow"><span>05</span>团队</p>
+    <h2 class="sec">1 位主持人、3 位顾问、6 位成员，共 10 位。</h2>
+    <div class="tm">
       <div>
+        <div class="ring" id="ring" aria-label="团队成员环形画廊，可左右拖动">
+          <div class="ring__stage" id="ringStage"></div>
+        </div>
+        <div class="ridx" id="ridx"></div>
+      </div>
+      <div>
+        <div class="cap" id="cap">
+          <div class="cap__head"><span class="cap__n" id="capN"></span><span class="cap__tag" id="capTag"></span></div>
+          <p class="cap__role" id="capRole"></p>
+          <p class="cap__bio" id="capBio"></p>
+          <p class="cap__stat" id="capStat"></p>
+          <p class="cap__foot">联系 <b>qgyw-swpu@163.com</b>（工作室转达）</p>
+        </div>
+        <div class="roster">
+          <span>建制</span>
+          <button type="button" data-go="0">主持人<em>1</em></button>
+          <span>·</span>
+          <button type="button" data-go="1">顾问<em>3</em></button>
+          <span>·</span>
+          <button type="button" data-go="4">成员<em>6</em></button>
+          <span>·</span>
+          <span>共 10 位，学科覆盖思政 / 工学 / 经济学</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 07 关注 ══ -->
+<section class="pane" id="follow" data-room="follow" data-tone="dark">
+  <div class="pane__in">
+    <div class="foot">
+      <p class="eyebrow"><span>尾声</span>关注我们</p>
+      <div class="foot__grid">
+        <div>
+          <h2 class="sec">故事还在继续，<br />下一期在公众号等你。</h2>
+          <p class="foot__lead">所有栏目、期次与报名入口都在公众号底部菜单里。扫码关注后即可查看全部内容与当期报名。</p>
+          <div class="qr-wrap">
+            <div class="qr-glow" aria-hidden="true"></div>
+            <div class="qr">
+              <img class="qr__img" src="assets/qr.png" width="600" height="600"
+                   alt="强国“油”我辅导员工作室 微信公众号二维码" />
+              <div class="qr__t">
+                <b>扫码关注</b>
+                <span>微信扫一扫，关注「强国油我」<br />报名 · 期次 · 全部内容</span>
+              </div>
+              <a class="qr__go" href="#top" aria-label="回到序章">↺</a>
+            </div>
+          </div>
+        </div>
         <div class="plates">
-          <div class="plate"><em>PLATE 01</em>第四批全国党建工作样板支部</div>
-          <div class="plate"><em>PLATE 02</em>教育部全国高校网络教育优秀作品</div>
-          <div class="plate"><em>PLATE 03</em>四川省「一节一推」特别展播奖</div>
-          <div class="plate"><em>PLATE 04</em>高校「一站式」社区风采展示优秀成果</div>
+          <p class="plates__h">已获牌匾</p>
+          <div class="plates__i"><span class="plates__no">01</span><span>第四批全国党建工作样板支部</span></div>
+          <div class="plates__i"><span class="plates__no">02</span><span>教育部全国高校网络教育优秀作品</span></div>
+          <div class="plates__i"><span class="plates__no">03</span><span>四川省「一节一推」特别展播奖</span></div>
+          <div class="plates__i"><span class="plates__no">04</span><span>高校「一站式」社区风采展示优秀成果</span></div>
+          <!-- 官方那份 PNG 三行字各自贴的，互差 0.6~3.5°，旋转救不回来。
+               所以油滴用官方切图，字重排：横平竖直，且任意分辨率都清晰。 -->
+          <figure class="signplate">
+            <img class="signplate__drop" src="assets/logo-drop.png" width="145" height="226"
+                 alt="" aria-hidden="true" />
+            <span class="signplate__k">辅导员工作室</span>
+            <b class="signplate__n">强国“油”我</b>
+            <span class="signplate__en">QIANG GUO YOU WO</span>
+            <figcaption>品牌标识 · 主办单位署名</figcaption>
+          </figure>
         </div>
-        <div class="mail">投稿与联络　<b>qgyw-swpu@163.com</b></div>
       </div>
-
-      <div class="qr">
-        <img class="qr__img" src="./images/qrcode.png"
-             width="200" height="200" alt="强国“油”我辅导员工作室 微信公众号二维码" />
-        <div class="qr__txt">
-          <b>扫码关注</b>
-          <span>微信扫一扫，关注「强国油我」<br />报名 · 期次 · 全部内容</span>
-        </div>
+      <div class="foot__meta">
+        <div><em>主办单位</em>西南石油大学 石油与天然气工程学院<br />强国“油”我辅导员工作室</div>
+        <div><em>投稿与联络</em><a href="mailto:qgyw-swpu@163.com">qgyw-swpu@163.com</a><br />四川省成都市新都区新都大道 8 号</div>
+        <div><em>备案信息</em>备案号于正式上线前补充</div>
       </div>
-    </div>
-
-    <div class="foot__bar">
-      <span>西南石油大学 石油与天然气工程学院 · 强国“油”我辅导员工作室</span>
-      <span>内容三审三校 · 版权所有</span>
+      <div class="foot__bar">
+        <span>内容三审三校 · 版权所有</span>
+        <span>© 2024–2026 强国“油”我辅导员工作室</span>
+      </div>
     </div>
   </div>
-</footer>
+</section>
 
-<script defer src="./js/main.js?v=20261022"></script>
+</div>
+
+<script id="cabData" type="application/json">{"art":[{"n":"「两优一先」展风华 · 榜样引领启新程","k":"连载","c":24,"it":[{"d":"2025-09-04","t":"“两优一先”展风华·榜样引领启新程|㉓优秀学生党务工作者-罗婉毓事迹展播","u":"https://mp.weixin.qq.com/s/8KoT8OXWj3sd2wEVH4xDCw","r":"261"},{"d":"2025-08-29","t":"“两优一先”展风华·榜样引领启新程|㉒优秀学生党务工作者-方建新事迹展播","u":"https://mp.weixin.qq.com/s/-34WPUf3_sXBabbyQHJX0A","r":"178"},{"d":"2025-08-28","t":"“两优一先”展风华·榜样引领启新程|㉑优秀学生党务工作者-代佳邑事迹展播","u":"https://mp.weixin.qq.com/s/C5ALMpU-qxPSHDW4rT45jw","r":"202"},{"d":"2025-08-25","t":"“两优一先”展风华·榜样引领启新程|⑳优秀共产党员-万智勇事迹展播","u":"https://mp.weixin.qq.com/s/Ft26VTAbT-7gCDy5V3Pjug","r":"175"},{"d":"2025-08-03","t":"“两优一先”展风华·榜样引领启新程|⑲优秀共产党员-杨勇军事迹展播","u":"https://mp.weixin.qq.com/s/xKnSAX5EsFagFDVVECG4og","r":"191"},{"d":"2025-08-02","t":"“两优一先”展风华·榜样引领启新程|⑱优秀学生党务工作者-邓银鑫事迹展播","u":"https://mp.weixin.qq.com/s/vbIMEcGUVIfM1yrU2bnsTw","r":"145"},{"d":"2025-07-27","t":"“两优一先”展风华·榜样引领启新程|⑰优秀共产党员-上官自然事迹展播","u":"https://mp.weixin.qq.com/s/yXldxLG-695T_qJUk2g3eQ","r":"279"},{"d":"2025-07-21","t":"“两优一先”展风华·榜样引领启新程|⑯优秀共产党员-张宇事迹展播","u":"https://mp.weixin.qq.com/s/wxK2tINxEy6e5R3lI7IejA","r":"146"},{"d":"2025-07-18","t":"“两优一先”展风华·榜样引领启新程|⑮优秀学生党务工作者-杨刘事迹展播","u":"https://mp.weixin.qq.com/s/CgrBF3awyt6h6VWTkVzwug","r":"94"},{"d":"2025-07-17","t":"“两优一先”展风华·榜样引领启新程|⑬优秀共产党员-朱思融事迹展播","u":"https://mp.weixin.qq.com/s/pa9CnT_naTAFKm4njZa0xw","r":"180"},{"d":"2025-07-15","t":"“两优一先”展风华·榜样引领启新程|⑫优秀共产党员-何胜鹏事迹展播","u":"https://mp.weixin.qq.com/s/MVGbjKmk4RKAWYaHJxo74Q","r":"137"},{"d":"2025-07-10","t":"“两优一先”展风华·榜样引领启新程|⑪优秀共产党员-魏长江事迹展播","u":"https://mp.weixin.qq.com/s/xJ-U7_-cgoXIpndyI2vy4A","r":"199"},{"d":"2025-07-09","t":"“两优一先”展风华·榜样引领启新程|⑩优秀学生党务工作者-唐静事迹展播","u":"https://mp.weixin.qq.com/s/LKqtdN8NFcY-TutKrCjSbw","r":"185"},{"d":"2025-07-08","t":"“两优一先”展风华·榜样引领启新程|⑨优秀学生党务工作者-谢义翔事迹展播","u":"https://mp.weixin.qq.com/s/XIsIn5aK9ElpMAiL5KcbHA","r":"104"},{"d":"2025-07-07","t":"“两优一先”展风华·榜样引领启新程|⑧优秀党务工作者-刘帅事迹展播","u":"https://mp.weixin.qq.com/s/fdVHtpZiaBE5rPulBiTtGg","r":"83"},{"d":"2025-07-07","t":"“两优一先”展风华·榜样引领启新程|⑦优秀学生党务工作者-陈帅事迹展播","u":"https://mp.weixin.qq.com/s/8vhEqP2L4x060-ImzpSnXQ","r":"168"},{"d":"2025-07-06","t":"“两优一先”展风华·榜样引领启新程|⑦优秀学生党务工作者-刘帅事迹展播","u":"https://mp.weixin.qq.com/s/fdVHtpZiaBE5rPulBiTtGg","r":"120"},{"d":"2025-07-05","t":"“两优一先”展风华·榜样引领启新程|⑥优秀学生党务工作者-何垠蒗事迹展播","u":"https://mp.weixin.qq.com/s/t9H6i250LFtr8H3FkKCkgQ","r":"206"},{"d":"2025-07-05","t":"“两优一先”展风华·榜样引领启新程|⑥优秀共产党员-陈雪妮事迹展播","u":"https://mp.weixin.qq.com/s/EtUl9qtTv4wYbj2RRjTZQg","r":"26"},{"d":"2025-07-04","t":"“两优一先”展风华·榜样引领启新程|⑤优秀共产党员-陈雪妮事迹展播","u":"https://mp.weixin.qq.com/s/EtUl9qtTv4wYbj2RRjTZQg","r":"397"},{"d":"2025-07-03","t":"“两优一先”展风华·榜样引领启新程|④优秀共产党员-陈祖伟事迹展播","u":"https://mp.weixin.qq.com/s/JbWwy0otFbYwurH0zZqENw","r":"374"},{"d":"2025-07-02","t":"“两优一先”展风华·榜样引领启新程|③优秀共产党员-李英媚事迹展播","u":"https://mp.weixin.qq.com/s/igUb3gv2-LUhO631_lj9OA","r":"359"},{"d":"2025-07-01","t":"“两优一先”展风华·榜样引领启新程|②优秀学生共产党员-罗曦翼事迹展播","u":"https://mp.weixin.qq.com/s/M15rRsZdo6FGJJ763s-ZUQ","r":"298"},{"d":"2025-06-30","t":"“两优一先”展风华·榜样引领启新程|①优秀学生党务工作者-彭思瑞事迹展播","u":"https://mp.weixin.qq.com/s/mxpsPx_a2Xw2wmf8TUktIg","r":"482"}]},{"n":"我的教育故事","k":"连载","c":9,"it":[{"d":"2025-11-20","t":"我的教育故事|何敏：姐随时等你回来","u":"https://mp.weixin.qq.com/s/M9l25zB9nweyxE-AETZQPw","r":"691"},{"d":"2025-11-13","t":"我的教育故事|朱苏阳：赋予知识更高的维度和更暖的温度","u":"https://mp.weixin.qq.com/s/pDm1GI34Wm2WA1CqgOI_rw","r":"565"},{"d":"2025-11-01","t":"我的教育故事|苏东华：传承教育家精神，让学校为每个学生骄傲","u":"https://mp.weixin.qq.com/s/IQbE_aZZ1VITcev8YbY6tQ","r":"186"},{"d":"2025-10-24","t":"我的教育故事|肖雨桐：用更专业更有温度的方式陪伴学生成长","u":"https://mp.weixin.qq.com/s/SJWHdsZrN5IAZuLBlukSPA","r":"723"},{"d":"2025-10-20","t":"我的教育故事|鲁尹婕：跨越山海 以心守望","u":"https://mp.weixin.qq.com/s/NX7XG0wiqGWxYKYI5BhkOQ","r":"367"},{"d":"2025-10-16","t":"我的教育故事|朱红钧：用爱与责任点燃学生心中的梦想 转载","u":"https://mp.weixin.qq.com/s/QD9qmpkrg422ufq_kPVoAA","r":"255"},{"d":"2025-10-13","t":"我的教育故事|徐广丽：“站好讲台”一直是我前进的动力","u":"https://mp.weixin.qq.com/s/sqr68B6DOZ-fZsowuRIquQ","r":"250"},{"d":"2025-10-12","t":"我的教育故事|吴瑕：在科教共生中追寻教育本真","u":"https://mp.weixin.qq.com/s/afGwSXyc-7neX5tYPksAqg","r":"273"},{"d":"2025-10-09","t":"我的教育故事|兰冰芯：师生一场 守候一生","u":"https://mp.weixin.qq.com/s/TtsK2tEEWphEqNFh_1zhew","r":"2,428"}]},{"n":"回家路上的风景","k":"连载","c":7,"it":[{"d":"2025-02-18","t":"回家路上的风景⑥|通过镜头看看不一样的家乡","u":"https://mp.weixin.qq.com/s/Bshe9bO7HLDmYYh4KFwWHA","r":"90"},{"d":"2025-02-17","t":"回家路上的风景⑤|回家路上的风景","u":"https://mp.weixin.qq.com/s/gohHkQrbx9UnqZTKSrkaNw","r":"41"},{"d":"2025-02-16","t":"回家路上的风景④|乡关就在前方","u":"https://mp.weixin.qq.com/s/s4dHodgL1ESSVTQZQDHhHQ","r":"39"},{"d":"2025-02-15","t":"回家路上的风景③|归途·冬韵·心旅","u":"https://mp.weixin.qq.com/s/MkvT8soIuH-bPkO5BRlAAg","r":"35"},{"d":"2025-02-14","t":"回家路上的风景②|小孩小孩你别馋，过了腊八就是年","u":"https://mp.weixin.qq.com/s/_lJfvbnspSZmyOPqtTI0tA","r":"35"},{"d":"2025-02-13","t":"回家路上的风景①|一路向南，风景与思念同行","u":"https://mp.weixin.qq.com/s/X7MhLfYJG3mTuCiBsp4ijg","r":"46"},{"d":"2024-12-28","t":"回家路上的风景|柚子们请注意，这里有综测加哦~","u":"https://mp.weixin.qq.com/s/XQX7oDT0HpcUtsNzaUm_jA","r":"280"}]},{"n":"学思践悟精神谱系","k":"连载","c":5,"it":[{"d":"2024-09-09","t":"探索前辈石油精神，续写青年时代篇章","u":"https://mp.weixin.qq.com/s/qBMKA79JZK-KRjfQFXriuw","r":"87"},{"d":"2024-09-04","t":"学思践悟精神谱系④|西路军——血铸祁连的悲壮历史","u":"https://mp.weixin.qq.com/s/nQ4_DS6Q1KfjMDIYi-k8Ew","r":"36"},{"d":"2024-08-30","t":"学思践悟精神谱系③|中国石油工业摇篮—“玉门油田”的时代传承","u":"https://mp.weixin.qq.com/s/wrG5Z8BwQhq1ErePI5e-ew","r":"153"},{"d":"2024-08-29","t":"学思践悟精神谱系②|我眼中的新时代—塔里木油田","u":"https://mp.weixin.qq.com/s/SVdyCForeJNR19pQULtyew","r":"209"},{"d":"2024-08-29","t":"学思践悟精神谱系（1）|塔里木油田的“心脏”—西气东输第一站","u":"https://mp.weixin.qq.com/s/mR6VNOGxGj_zzT7rW71GEQ","r":"278"}]},{"n":"强国「油」我小课堂","k":"连载","c":3,"it":[{"d":"2024-09-27","t":"强国“油”我小课堂③|确定为入党积极分子","u":"https://mp.weixin.qq.com/s/Cjku5BuXPvX28r2GzSaS2Q","r":"285"},{"d":"2024-09-15","t":"强国“油”我小课堂②|谈心谈话“攻略”请查收","u":"https://mp.weixin.qq.com/s/xQ8VKS47rfPgXKeTNM-cuA","r":"384"},{"d":"2024-09-11","t":"强国“油”我小课堂|@2024级新生，请查收入党申请书的撰写攻略","u":"https://mp.weixin.qq.com/s/9ETqNg1BCkH4SSVNofTkeg","r":"894"}]},{"n":"「梦溪青春心向党」优秀学生党员党课展示","k":"连载","c":3,"it":[{"d":"2024-10-28","t":"“梦溪青春心向党”优秀学生党员党课展示第③期|迎接挑战·我们的自信从何而来","u":"https://mp.weixin.qq.com/s/oRdswCxJypLEXTgElTeQyA","r":"154"},{"d":"2024-10-18","t":"“梦溪青春心向党”优秀学生党员党课展示第②期|把青春播撒在能源强国的征程上","u":"https://mp.weixin.qq.com/s/GoF62jvXwECGjpJbZq4bNQ","r":"235"},{"d":"2024-10-17","t":"“梦溪青春心向党”优秀学生党员党课展示第①期|沿前辈奋斗足迹，担能源强国使命","u":"https://mp.weixin.qq.com/s/ctvtnVo2acgzDYvkL4BdFA","r":"125"}]},{"n":"工作室事务","k":"主题","c":18,"it":[{"d":"2026-01-14","t":"辅导员沙龙解锁“AI赋能”新技能-“基本盘”定根基，“笨功夫”见真章","u":"https://mp.weixin.qq.com/s/eTX3a3LqPmxhc_XJ4OX3vQ","r":"91"},{"d":"2025-06-05","t":"红帆领航，矩阵生长：工作室顺利举办“梦溪·论道”辅导员工作沙龙第12期","u":"https://mp.weixin.qq.com/s/LTQK_KXGZKeSZhOH7CM1TA","r":"266"},{"d":"2025-06-03","t":"预告：“梦溪·论道”辅导员工作沙龙第12期来啦！","u":"https://mp.weixin.qq.com/s/ERz4faKpWZzTNXgSXeuCUw","r":"157"},{"d":"2025-01-29","t":"蛇舞新春|强国“油”我学生网络文化工作室向大家拜年啦！","u":"https://mp.weixin.qq.com/s/D5XzNC1GlILi36XYRpBOhQ","r":"76"},{"d":"2025-01-28","t":"蛇舞新春|强国“油”我辅导员工作室向大家拜年啦！","u":"https://mp.weixin.qq.com/s/nR4CTbcqYzo7P0rQA5L1mw","r":"165"},{"d":"2025-01-27","t":"强国“油”我辅导员工作室携手学生网络文化工作室给大家拜年啦！","u":"https://mp.weixin.qq.com/s/qnQz4uAP20xgE7oWsAXz2Q","r":"107"},{"d":"2025-01-25","t":"传承红色基因 凝聚奋进力量—强国“油”我辅导员工作室开展党性教育活动","u":"https://mp.weixin.qq.com/s/TmVDyMI-RWwkPFq-TsXGxQ","r":"104"},{"d":"2025-01-08","t":"工作室赴中石化西南工程公司慰问一线工作校友","u":"https://mp.weixin.qq.com/s/F0SI0HuTAJHsbNsLMjwdaw","r":"65"},{"d":"2024-09-10","t":"第四十个教师节|来听听工作室老师们的心里话","u":"https://mp.weixin.qq.com/s/wDjonIhjdLpUW3y9J_Kmpw","r":"350"},{"d":"2024-08-24","t":"工作室在西南石油大学2024年暑期辅导员素质能力提升培训班中做经验分享","u":"https://mp.weixin.qq.com/s/940AGDqRHOs3dqVcFvCVKg","r":"58"},{"d":"2024-08-23","t":"工作室在全省高校党委组织部部长培训班交流工作经验","u":"https://mp.weixin.qq.com/s/pHBYZtgFFmtNjwHzEMbIbg","r":"58"},{"d":"2024-07-20","t":"强国油我，青春实干|牢记殷殷嘱托，立志兴油报国——西南石油大学强国油我辅导员工作室在路上","u":"https://mp.weixin.qq.com/s/gtZbNGEWuJTeZ2bwGKi8iQ","r":"289"},{"d":"2024-07-18","t":"强国油我，青春实干|追寻红色印记，赓续玉门精神——西南石油大学强国“油”我辅导员工作室在路上","u":"https://mp.weixin.qq.com/s/cOYwyyTc0luZTR_PY2qh0A","r":"222"},{"d":"2024-07-17","t":"强国油我，青春实干|寻迹核工业精神，汇聚奋进力量——西南石油大学强国“油”我辅导员工作室在路上","u":"https://mp.weixin.qq.com/s/sdgzTdQLWbP22c-A8_ZF_w","r":"239"},{"d":"2024-07-17","t":"强国油我，青春实干|追寻红色足迹，凝聚爱国力量——西南石油大学强国“油”我辅导员工作室在路上","u":"https://mp.weixin.qq.com/s/eWg5w9WcOiWF9WWoutpekQ","r":"277"},{"d":"2024-06-20","t":"强国“油”我辅导员工作室-第一期沙龙分享活动","u":"https://mp.weixin.qq.com/s/nw05IxPOhDsVUweH1PtSlA","r":"80"},{"d":"2024-06-13","t":"以满格状态，奔赴星辰大海","u":"https://mp.weixin.qq.com/s/zjziqhUzacU-q5CKBUJzQg","r":"274"},{"d":"2024-06-07","t":"工作室来袭|强国“油”我辅导员工作室","u":"https://mp.weixin.qq.com/s/rX-2-IfsMNxUfuiSTaQEpw","r":"1,221"}]},{"n":"党建与支部","k":"主题","c":15,"it":[{"d":"2025-11-07","t":"这场仪式“声”入人心：信仰、书本与一场走心的对话","u":"https://mp.weixin.qq.com/s/kQ6bDSkWue8gm0EzTQ4vUQ","r":"186"},{"d":"2025-09-28","t":"党建共建|石工院学生第十三党支部受邀前往成都工业学院分享","u":"https://mp.weixin.qq.com/s/tOje0cLGAtG8zBF9zAToWA","r":"202"},{"d":"2025-07-11","t":"赤水河畔忆峥嵘，党建联建筑信仰 —西南石油大学石工院学生第十三党支部与水落村党支部开展“七一红色之约”","u":"https://mp.weixin.qq.com/s/1c_UbLxEoueRWRI0jR9tZQ","r":"97"},{"d":"2025-07-10","t":"赤水河畔忆峥嵘，党建联建筑信仰 —西南石油大学石工院学生第十三党支部与水落村党支部开展“七一红色之约”","u":"https://mp.weixin.qq.com/s/KuV2VDXY3Si7BcG1RdX-Eg","r":"93"},{"d":"2025-06-04","t":"校党委书记张烈辉为石工院学生第十三党支部讲授主题教育专题党课","u":"https://mp.weixin.qq.com/s/K4tQ1IyDQ11Egs2o5AmIlw","r":"395"},{"d":"2025-05-23","t":"交叉协同促发展，自立自强向未来——石工院学生第十三党支部与计科院研究生第六党支部联合开展主题党日活动","u":"https://mp.weixin.qq.com/s/nucKwq8CQMhmMDU1QvMDIg","r":"81"},{"d":"2025-05-19","t":"这样发展党员，更有“味”有“为”","u":"https://mp.weixin.qq.com/s/3zlmeS_hFqBeui8um7nCPg","r":"225"},{"d":"2025-05-18","t":"凝党团合力·谱青春华章——石油与天然气工程学院顺利举行党班团共建仪式","u":"https://mp.weixin.qq.com/s/l7d0btZkTen4fkkKQs8WCg","r":"216"},{"d":"2025-03-28","t":"“联学聚合力，共建促提升”——石工院学生第十三党支部与川大江安本科党支部联学共建活动","u":"https://mp.weixin.qq.com/s/1Fj_rPINmdpITKVWCXbYBw","r":"110"},{"d":"2024-12-05","t":"基层党建也需要Passion来点缀","u":"https://mp.weixin.qq.com/s/MEkQlCLBCU144hGDB8kjbA","r":"165"},{"d":"2024-11-16","t":"党建经验共享|党建引领促发展·互学互鉴共提升","u":"https://mp.weixin.qq.com/s/pQba7lCy7rbhmtaMeygIVQ","r":"57"},{"d":"2024-11-08","t":"工作室主持人兰冰芯党课上线“党课星期天”","u":"https://mp.weixin.qq.com/s/LDJSDuvbmqnrnuDi0RmNYA","r":"190"},{"d":"2024-07-06","t":"党建速报|石工院“擦亮党建品牌，焕发支部活力”学生党支部微党课大赛顺利举行","u":"https://mp.weixin.qq.com/s/aZbY4ncCW3JGvs5UWAMoYQ","r":"44"},{"d":"2024-06-17","t":"党旗引领青春路，用镜头定格信仰","u":"https://mp.weixin.qq.com/s/-bfQFfnnlboazBCJoM0aHg","r":"157"},{"d":"2024-06-12","t":"誓言铮铮，薪火相传|入党“仪式感”","u":"https://mp.weixin.qq.com/s/pmJsyFZ0sz9_lMeR7uKUGQ","r":"392"}]},{"n":"年终总结 · 年度盘点","k":"主题","c":15,"it":[{"d":"2026-02-16","t":"年终盘点|强国“油”我工作室的2025，这一年的高光时刻请查收","u":"https://mp.weixin.qq.com/s/7G1f1Dhxefu83t_fI5E1_Q","r":"107"},{"d":"2026-02-15","t":"2025年终总结来袭|⑦廖俊怡：党建领航强根基，四维联动促成长","u":"https://mp.weixin.qq.com/s/XMXdul3uL4NSQlv7SGWm1w","r":"109"},{"d":"2026-02-15","t":"2025年终总结来袭|⑥肖雨桐：一程山水一程歌，倾心守护共成长","u":"https://mp.weixin.qq.com/s/suJZkkKXHTRcwy9nYmvQzQ","r":"270"},{"d":"2026-02-14","t":"2025年终总结来袭|⑤程美容：当好青春引路人，辅导员“铸魂·赋能·守护·创新”四维育人笔记","u":"https://mp.weixin.qq.com/s/7HbIksuesWDtCRFFXkhm5Q","r":"171"},{"d":"2026-02-12","t":"2025年终总结来袭|④谢诗雪：以爱为犁，深耕不辍","u":"https://mp.weixin.qq.com/s/7we6Cye_PDV3cnVWRvue5A","r":"330"},{"d":"2026-02-11","t":"2025年终总结来袭|③鲁尹婕：沉浸式当辅导员，一学期的“情绪价值”存档","u":"https://mp.weixin.qq.com/s/U2KEMPeVZOf07tRBRmRENA","r":"290"},{"d":"2026-02-05","t":"2025年终总结来袭|②杨猛：凝心聚力促就业·守正创新育新苗","u":"https://mp.weixin.qq.com/s/H4YGtV4r4ByJ6s8hLkpkZQ","r":"125"},{"d":"2026-01-25","t":"2025年终总结来袭|①兰冰芯：立足三个身份。让学生工作从指间到心间","u":"https://mp.weixin.qq.com/s/-NNX229kV5vxINQVJqnrmQ","r":"1,115"},{"d":"2025-01-28","t":"工作室年终总结|⑦把握时代“心”脉搏，笃行致远助成长","u":"https://mp.weixin.qq.com/s/rdhbhuQTOgEXNj5pP_OvMA","r":"91"},{"d":"2025-01-27","t":"工作室年终总结|⑥四心领航，育梦青春绽芳华","u":"https://mp.weixin.qq.com/s/iQ_2m64s4G16eKnDhdqvWw","r":"83"},{"d":"2025-01-26","t":"工作室年终总结|④坚持“四个聚焦”，服务育人大局","u":"https://mp.weixin.qq.com/s/BKeNn9cfeq8lynAd1yiMQA","r":"121"},{"d":"2025-01-26","t":"工作室年终总结⑤从心出发，做好毕业生工作的“微积分”","u":"https://mp.weixin.qq.com/s/4oLWUWQoEMSdPJwau0PRhA","r":"125"},{"d":"2025-01-25","t":"工作室年终总结|③用心陪伴，与青春同行","u":"https://mp.weixin.qq.com/s/h2Rd1bc4JGiWMUiw4fChPA","r":"203"},{"d":"2025-01-25","t":"工作室年终总结|②精耕细作育英才，润己泽人谱新篇","u":"https://mp.weixin.qq.com/s/VOZ8RJLW_UJc-gM3BjyfHA","r":"154"},{"d":"2025-01-12","t":"工作室年终总结|①立足三个身份，让学生工作从指间到心间","u":"https://mp.weixin.qq.com/s/YWQIwSpr-9kCZiS0bPwODA","r":"367"}]},{"n":"社会实践","k":"主题","c":7,"it":[{"d":"2026-02-24","t":"青雁归巢|“江阳归雁”，校企地共谈家乡发展加速度","u":"https://mp.weixin.qq.com/s/b3T-BFCgXUIRyyxSHFqypQ","r":"189"},{"d":"2025-08-25","t":"用青春之声讲述时代奋进的故事|走出大山，再走进大山","u":"https://mp.weixin.qq.com/s/rQ-8KZrZnKapODGuiOR9XQ","r":"113"},{"d":"2025-04-28","t":"瞧~辅导员带你走进海上平台","u":"https://mp.weixin.qq.com/s/ZwdhXrG8g0Xpyp60xITM5A","r":"408"},{"d":"2025-04-28","t":"强国“油”我辅导员工作室赴天津开展“五访五促”专项行动","u":"https://mp.weixin.qq.com/s/kKSaxmfpF3bBRdccoPjZTA","r":"96"},{"d":"2024-09-28","t":"看过来！校企携手工作室，青年齐心“五个一”，同祝祖国华诞！","u":"https://mp.weixin.qq.com/s/crt_g7e-jAWVg2_sX9yBCQ","r":"58"},{"d":"2024-08-23","t":"耗时4月，征途三省一万里，我的成长日记","u":"https://mp.weixin.qq.com/s/P3IvJe2yTw8SepWvhanNwQ","r":"219"},{"d":"2024-07-08","t":"特色活动|重走习近平总书记的能源足迹-胜利油田","u":"https://mp.weixin.qq.com/s/Bt5cjihl74C1WpFnG-p3lg","r":"45"}]},{"n":"学风建设","k":"主题","c":6,"it":[{"d":"2025-05-30","t":"独家福利“石工院考研加油站-数学专班”开讲 ——考研竞赛凯哥助力学子攻克函数极限难题","u":"https://mp.weixin.qq.com/s/mlLQFpguGtgVdvD1ThHUUg","r":"175"},{"d":"2025-05-28","t":"独家福利“石工院考研加油站-数学专班”开讲 ——考研竞赛凯哥助力学子攻克函数极限难题","u":"https://mp.weixin.qq.com/s/mlLQFpguGtgVdvD1ThHUUg","r":"280"},{"d":"2025-03-19","t":"石工院2022级深造、就业动员大会直播预告","u":"https://mp.weixin.qq.com/s/ticQR-Yx9Es-ZKvA1lWTcw","r":"502"},{"d":"2025-02-28","t":"“综测+礼品”请查收","u":"https://mp.weixin.qq.com/s/sd5u7DdDeRikR_E_ARGFXw","r":"238"},{"d":"2025-02-07","t":"石工院特色学风举措|“补考”看淡，不服就干","u":"https://mp.weixin.qq.com/s/6E3zTL1-OcoeDbLwqmnJtg","r":"322"},{"d":"2025-02-06","t":"石工院特色学风举措|①学霸齐帮扶，“补考”由我不由天","u":"https://mp.weixin.qq.com/s/F8EEWJOkzp6XeIIVDKMh7Q","r":"507"}]},{"n":"迎新季","k":"主题","c":5,"it":[{"d":"2026-09-18","t":"我与寝室合个影——从青涩到成熟，从初见到远航，47个寝室，272人，一个都不能少！","u":"https://mp.weixin.qq.com/s/qmn3tYrHonul-cHFvWZnyQ","r":"37"},{"d":"2026-09-18","t":"我与寝室合个影","u":"https://mp.weixin.qq.com/s/qmn3tYrHonul-cHFvWZnyQ","r":"1"},{"d":"2026-08-27","t":"【迎新季②】辅导员已就位，热闹开学~","u":"https://mp.weixin.qq.com/s/tsRWlookciLItYojE8Niyg","r":"482"},{"d":"2026-08-08","t":"【迎新季①】石工院班导生已就位，快来认领你的新生重要信息","u":"https://mp.weixin.qq.com/s/V-_foQ2pT-2OzaW_uMrTCQ","r":"1,589"},{"d":"2026-08-07","t":"【迎新季】辅导员和班导生已就位，快来认领你的新生重要信息","u":"https://mp.weixin.qq.com/s/V-_foQ2pT-2OzaW_uMrTCQ","r":"334"}]},{"n":"学生工作","k":"主题","c":4,"it":[{"d":"2026-09-24","t":"宿舍听你的，班委看实干|这次上“新”从宿舍分配和班委竞选说起","u":"https://mp.weixin.qq.com/s/XRz7RH-5udXZKp5hCewa_w","r":"297"},{"d":"2026-09-18","t":"跃入“两深一非”的星辰大海，做一朵能源报国的奔涌浪花西南石油大学石工院2026届毕业MV《入海》首发","u":"https://mp.weixin.qq.com/s/-2xAhbSQRH6ivEUwa5uVJQ","r":"121"},{"d":"2026-01-28","t":"石工院师生热议党代会","u":"https://mp.weixin.qq.com/s/VtoIpomiASJ3lJv0n2mk-g","r":"179"},{"d":"2025-12-04","t":"上岸“加油包”，传递学院的暖暖心意","u":"https://mp.weixin.qq.com/s/YUFr4wBD-KAsGQ0q73XfMw","r":"180"}]},{"n":"获奖与荣誉","k":"主题","c":3,"it":[{"d":"2026-09-28","t":"再获佳绩|工作室荣获全国优秀推广作品2项、优秀展播作品2项","u":"https://mp.weixin.qq.com/s/zPIYfWP3VfeCS37Zw2Otqw","r":"191"},{"d":"2024-09-26","t":"工作室喜讯|工作室2位老师在第七届全国大学生网络文化节和全国高校网络教育优秀作品推选展示活动获奖","u":"https://mp.weixin.qq.com/s/A_vLJJAU3igvnZE_byb1Cg","r":"199"},{"d":"2024-08-12","t":"省赛金奖！工作室指导项目在四川省国际大学生创新大赛中斩获佳绩","u":"https://mp.weixin.qq.com/s/Zc6AD5HAqC7A6NDKQjXB1w","r":"102"}]},{"n":"影像与校园文化","k":"主题","c":2,"it":[{"d":"2024-12-02","t":"冬日限定 | 西油“毛衣秀”，安排上啦","u":"https://mp.weixin.qq.com/s/T8Ot5Fax_oFNPACKsmFpoQ","r":"691"},{"d":"2024-11-11","t":"这首歌一唱就是一辈子","u":"https://mp.weixin.qq.com/s/j8dHc4KogQrvNzWUZZzW1w","r":"91"}]}],"vid":[{"n":"学思践悟精神谱系","k":"连载","c":4,"it":[{"d":"","t":"学思践悟精神谱系②|我眼中的新时代—塔里木油田","u":"https://mp.weixin.qq.com/s/SVdyCForeJNR19pQULtyew","r":""},{"d":"","t":"学思践悟精神谱系（1）|塔里木油田的“心脏”—西气东输第一站","u":"https://mp.weixin.qq.com/s/mR6VNOGxGj_zzT7rW71GEQ","r":""},{"d":"","t":"学思践悟精神谱系③|中国石油工业摇篮—“玉门油田”的时代传承","u":"https://mp.weixin.qq.com/s/wrG5Z8BwQhq1ErePI5e-ew","r":""},{"d":"","t":"学思践悟精神谱系④|西路军——血铸祁连的悲壮历史","u":"https://mp.weixin.qq.com/s/nQ4_DS6Q1KfjMDIYi-k8Ew","r":""}]},{"n":"强国「油」我小课堂","k":"连载","c":3,"it":[{"d":"","t":"强国“油”我小课堂|@2024级新生，请查收入党申请书的撰写攻略","u":"https://mp.weixin.qq.com/s/9ETqNg1BCkH4SSVNofTkeg","r":""},{"d":"","t":"强国“油”我小课堂②|谈心谈话“攻略”请查收","u":"https://mp.weixin.qq.com/s/xQ8VKS47rfPgXKeTNM-cuA","r":""},{"d":"","t":"强国“油”我小课堂③|确定为入党积极分子","u":"https://mp.weixin.qq.com/s/Cjku5BuXPvX28r2GzSaS2Q","r":""}]},{"n":"「梦溪青春心向党」党课展示","k":"连载","c":3,"it":[{"d":"","t":"“梦溪青春心向党”优秀学生党员党课展示第①期|沿前辈奋斗足迹，担能源强国使命","u":"https://mp.weixin.qq.com/s/ctvtnVo2acgzDYvkL4BdFA","r":""},{"d":"","t":"“梦溪青春心向党”优秀学生党员党课展示第②期|把青春播撒在能源强国的征程上","u":"https://mp.weixin.qq.com/s/GoF62jvXwECGjpJbZq4bNQ","r":""},{"d":"","t":"“梦溪青春心向党”优秀学生党员党课展示第③期|迎接挑战·我们的自信从何而来","u":"https://mp.weixin.qq.com/s/oRdswCxJypLEXTgElTeQyA","r":""}]},{"n":"强国油我，青春实干","k":"影像","c":2,"it":[{"d":"","t":"强国油我，青春实干|追寻红色足迹，凝聚爱国力量——西南石油大学强国“油”我辅导员工作室在路上","u":"https://mp.weixin.qq.com/s/eWg5w9WcOiWF9WWoutpekQ","r":""},{"d":"","t":"强国油我，青春实干|追寻红色印记，赓续玉门精神——西南石油大学强国“油”我辅导员工作室在路上","u":"https://mp.weixin.qq.com/s/cOYwyyTc0luZTR_PY2qh0A","r":""}]},{"n":"强国「油」我 · 先锋行动/先锋计划","k":"影像","c":2,"it":[{"d":"","t":"强国“油”我·先锋行动|第十周抢票时间一览表","u":"https://mp.weixin.qq.com/s/i8aJlvuxoORIiJCd1etOWA","r":""},{"d":"","t":"强国“油”我·先锋计划“1+X”能力培训|第⑦期来袭","u":"https://mp.weixin.qq.com/s/JMNptU-z6UaG5WEgFakTiQ","r":""}]},{"n":"单篇影像","k":"影像","c":13,"it":[{"d":"","t":"党旗引领青春路，用镜头定格信仰","u":"https://mp.weixin.qq.com/s/-bfQFfnnlboazBCJoM0aHg","r":""},{"d":"","t":"强国“油”我辅导员工作室-第一期沙龙分享活动","u":"https://mp.weixin.qq.com/s/nw05IxPOhDsVUweH1PtSlA","r":""},{"d":"","t":"耗时4月，征途三省一万里，我的成长日记","u":"https://mp.weixin.qq.com/s/P3IvJe2yTw8SepWvhanNwQ","r":""},{"d":"","t":"看过来！校企携手工作室，青年齐心“五个一”，同祝祖国华诞！","u":"https://mp.weixin.qq.com/s/crt_g7e-jAWVg2_sX9yBCQ","r":""},{"d":"","t":"这首歌一唱就是一辈子","u":"https://mp.weixin.qq.com/s/j8dHc4KogQrvNzWUZZzW1w","r":""},{"d":"","t":"回家路上的风景⑥|通过镜头看看不一样的家乡","u":"https://mp.weixin.qq.com/s/Bshe9bO7HLDmYYh4KFwWHA","r":""},{"d":"","t":"瞧~辅导员带你走进海上平台","u":"https://mp.weixin.qq.com/s/ZwdhXrG8g0Xpyp60xITM5A","r":""},{"d":"","t":"上岸“加油包”，传递学院的暖暖心意","u":"https://mp.weixin.qq.com/s/YUFr4wBD-KAsGQ0q73XfMw","r":""},{"d":"","t":"辅导员沙龙解锁“AI赋能”新技能-“基本盘”定根基，“笨功夫”见真章","u":"https://mp.weixin.qq.com/s/eTX3a3LqPmxhc_XJ4OX3vQ","r":""},{"d":"","t":"石工院师生热议党代会","u":"https://mp.weixin.qq.com/s/VtoIpomiASJ3lJv0n2mk-g","r":""},{"d":"","t":"跃入“两深一非”的星辰大海，做一朵能源报国的奔涌浪花西南石油大学石工院2026届毕业MV《入海》首发","u":"https://mp.weixin.qq.com/s/-2xAhbSQRH6ivEUwa5uVJQ","r":""},{"d":"","t":"我与寝室合个影——从青涩到成熟，从初见到远航，47个寝室，272人，一个都不能少！","u":"https://mp.weixin.qq.com/s/qmn3tYrHonul-cHFvWZnyQ","r":""},{"d":"","t":"再获佳绩|工作室荣获全国优秀推广作品2项、优秀展播作品2项","u":"https://mp.weixin.qq.com/s/zPIYfWP3VfeCS37Zw2Otqw","r":""}]}]}</script>
+<script>/* ══════════════════════════════════════════════════════════════════
+   A · 轨道：原生 scroll-snap
+   ─────────────────────────────────────────────────────────────────
+   旧版是自己算位移、改 transform、松手再算落点。真机上必然出三件事：
+   跟手有延迟、惯性不如系统、偶尔停两屏之间。这套全部删掉。
+
+   现在：横向滚动、惯性、吸附都由浏览器做（CSS scroll-snap），
+   JS 只做三件事——
+     1. 点导航时 scrollTo 到对应屏
+     2. 滚完同步 UI（页码 / 进度尺 / 房间配色 / 焦点隔离）
+     3. 桌面把竖向滚轮翻译成横向翻屏（触控板横向滑动浏览器自己会处理）
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var rail   = document.getElementById('rail');
+  var panes  = Array.prototype.slice.call(document.querySelectorAll('.pane'));
+  var IDS    = panes.map(function(p){ return p.id; });
+  var links  = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
+  var dlinks = Array.prototype.slice.call(document.querySelectorAll('#drawer a'));
+  var bar    = document.getElementById('bar');
+  var count  = document.getElementById('count');
+  var mfill  = document.getElementById('mbarFill');
+  var dotsBox= document.getElementById('dots');
+  var mBox   = document.getElementById('mdots');
+  var N      = panes.length;
+  var cur    = 0;
+  var LABEL  = ['首页','荣誉','关于','内容','作品','团队','关注'];
+
+  /* 两套导航一次建好：右侧竖排（桌面）+ 底部圆点（手机） */
+  panes.forEach(function(p, i){
+    var d = document.createElement('button');
+    d.type = 'button'; d.className = 'dot';
+    d.innerHTML = '<span>' + String(i+1).padStart(2,'0') + '</span>' + LABEL[i];
+    d.setAttribute('aria-label', '第 ' + (i+1) + ' 屏：' + LABEL[i]);
+    d.addEventListener('click', function(){ go(i); });
+    dotsBox.appendChild(d);
+
+    if (mBox){
+      var m = document.createElement('button');
+      m.type = 'button'; m.className = 'mdot';
+      m.innerHTML = '<span></span>';
+      m.setAttribute('aria-label', '跳到第 ' + (i+1) + ' 屏：' + LABEL[i]);
+      m.addEventListener('click', function(){ go(i); });
+      mBox.appendChild(m);
+    }
+  });
+  var dotBtns  = Array.prototype.slice.call(dotsBox.children);
+  var mdotBtns = mBox ? Array.prototype.slice.call(mBox.children) : [];
+
+  function step(){ return rail.clientWidth || window.innerWidth; }
+
+  function paint(i){
+    cur = i;
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + IDS[i]); });
+    dlinks.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + IDS[i]); });
+    dotBtns.forEach(function(b, k){ b.classList.toggle('on', k === i); });
+    mdotBtns.forEach(function(b, k){
+      b.classList.toggle('on', k === i);
+      if (k === i) b.setAttribute('aria-current','true'); else b.removeAttribute('aria-current');
+    });
+    count.textContent = String(i+1).padStart(2,'0') + ' / ' + String(N).padStart(2,'0');
+    if (mfill) mfill.style.width = (100 / N * (i + 1)) + '%';
+    document.body.dataset.room = panes[i].dataset.room || 'hero';
+    document.body.dataset.tone = panes[i].dataset.tone || 'dark';
+    bar.classList.toggle('is-light', panes[i].dataset.tone === 'light');
+    if (window.__ringPause) window.__ringPause(IDS[i] !== 'team');
+  }
+
+  /* 焦点隔离：非当前屏移出 Tab 序与无障碍树 */
+  function isolate(i){
+    panes.forEach(function(p, k){
+      if (k === i) p.removeAttribute('inert'); else p.setAttribute('inert', '');
+    });
+  }
+
+  function go(i, opt){
+    opt = opt || {};
+    i = Math.max(0, Math.min(N - 1, i | 0));
+    var left = i * step();
+    if (opt.instant){
+      var prev = rail.style.scrollBehavior;
+      rail.style.scrollBehavior = 'auto';          /* 瞬移：深链、后退、resize */
+      rail.scrollLeft = left;
+      rail.scrollTop = 0;
+      rail.style.scrollBehavior = prev;
+    } else {
+      rail.scrollTo({ left: left, top: 0, behavior: 'smooth' });
+    }
+    if (i !== cur){ paint(i); isolate(i); }
+    if (opt.push){
+      var url = '#' + IDS[i];
+      if (location.hash !== url) history.pushState({ i: i }, '', url);
+    }
+  }
+
+  /* 吸附完成后同步状态：rAF 节流，不写防抖计时器 */
+  var tick = false;
+  rail.addEventListener('scroll', function(){
+    if (tick) return;
+    tick = true;
+    requestAnimationFrame(function(){
+      tick = false;
+      var i = Math.round(rail.scrollLeft / step());
+      i = Math.max(0, Math.min(N - 1, i));
+      if (i !== cur){
+        paint(i);
+        isolate(i);
+        history.replaceState({ i: i }, '', '#' + IDS[i]);
+      }
+    });
+  }, { passive: true });
+
+  /* 桌面滚轮：先让屏内可滚区域吃完，再翻屏 */
+  var acc = 0, lock = 0;
+  function scrollableInPath(el, dir){
+    while (el && el !== document.body){
+      var cs = getComputedStyle(el);
+      if (/(auto|scroll)/.test(cs.overflowY) && el.scrollHeight > el.clientHeight + 2){
+        if (dir > 0 && el.scrollTop + el.clientHeight < el.scrollHeight - 2) return true;
+        if (dir < 0 && el.scrollTop > 2) return true;
+      }
+      el = el.parentElement;
+    }
+    return false;
+  }
+  window.addEventListener('wheel', function(e){
+    var now = Date.now();
+    var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    if (Math.abs(d) < 2) return;
+    if (scrollableInPath(e.target, d)) { acc = 0; return; }
+    e.preventDefault();
+    if (now < lock) return;
+    acc += d;
+    if (Math.abs(acc) < 60) return;
+    acc = 0; lock = now + 640;
+    go(cur + (d > 0 ? 1 : -1));
+  }, { passive: false });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && document.body.classList.contains('menu-open')){ setMenu(false); return; }
+    /* 抽屉开着时，方向键不穿到轨道上（Y10） */
+    if (document.body.classList.contains('menu-open')) return;
+    if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+    var t = e.target;
+    if (t && t.closest && t.closest('input,textarea,select,button,a,[contenteditable],[role="tab"]')) return;
+    e.preventDefault();
+    go(cur + (e.key === 'ArrowRight' ? 1 : -1));
+  });
+
+  document.addEventListener('click', function(e){
+    var n = e.target;
+    while (n && n !== document && !(n.tagName === 'A' && n.getAttribute)) n = n.parentNode;
+    if (!n || n === document) return;
+    var href = n.getAttribute('href') || '';
+    if (href.charAt(0) !== '#') return;
+    var idx = IDS.indexOf(href.slice(1));
+    if (idx < 0) return;
+    e.preventDefault();
+    go(idx, { push: true });
+    setMenu(false);
+  });
+
+  var burger = document.getElementById('burger'), drawer = document.getElementById('drawer');
+  function setMenu(open){
+    document.body.classList.toggle('menu-open', open);
+    if (rail) rail.style.overflowX = open ? 'hidden' : '';   /* 抽屉开着锁死横向滚动（Y10） */
+    if (burger){
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? '关闭目录' : '打开目录');
+    }
+    if (drawer) drawer.setAttribute('aria-hidden', String(!open));
+  }
+  if (burger) burger.addEventListener('click', function(){
+    setMenu(!document.body.classList.contains('menu-open'));
+  });
+  /* resize 用 rAF 合帧：软键盘弹出/旋转屏会连发几十次，不去重会疯狂瞬移 */
+  var rzLock = false;
+  window.addEventListener('resize', function(){
+    if (rzLock) return;
+    rzLock = true;
+    requestAnimationFrame(function(){
+      rzLock = false;
+      if (window.innerWidth >= 980) setMenu(false);
+      go(cur, { instant: true });    /* 尺寸变了，重新对齐到整屏 */
+    });
+  }, { passive: true });
+
+  window.addEventListener('popstate', function(){
+    var h = IDS.indexOf((location.hash || '').replace('#',''));
+    go(h >= 0 ? h : 0, { instant: true });
+  });
+
+  var start = IDS.indexOf((location.hash || '').replace('#',''));
+  start = start > 0 ? start : 0;
+  paint(start);
+  isolate(start);
+  go(start, { instant: true });
+
+  window.__go = go;
+})();
+
+/* ══════════════════════════════════════════════════════════════════
+   B · 作品档案柜
+   一屏装 21 个系列 → 点系列在同屏换成条目 → 点条目跳公众号
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var raw = document.getElementById('cabData');
+  if (!raw) return;
+  var data;
+  try { data = JSON.parse(raw.textContent); } catch(e){ return; }
+
+  var cab   = document.getElementById('cab');
+  var grid  = document.getElementById('cabGrid');
+  var items = document.getElementById('cabItems');
+  var hn    = document.getElementById('cabHn');
+  var hc    = document.getElementById('cabHc');
+  var meta  = document.getElementById('cabMeta');
+  var tabs  = Array.prototype.slice.call(document.querySelectorAll('.tabs button'));
+  var touch = matchMedia('(hover: none)').matches;
+  /* 21 张封面：键 = kind + 系列全名。图文/影像有同名系列（学思践悟、小课堂），
+     只用系列名做键会互相覆盖 —— 这是上一版截图里缺图的根因之一。 */
+  var COV = {"art|「两优一先」展风华 · 榜样引领启新程": {"u": "assets/covers/art-01.jpg", "ph": false, "tone": ""}, "art|我的教育故事": {"u": "assets/covers/art-02.jpg", "ph": false, "tone": ""}, "art|回家路上的风景": {"u": "assets/covers/art-03.jpg", "ph": false, "tone": ""}, "art|学思践悟精神谱系": {"u": "assets/covers/art-04.jpg", "ph": false, "tone": ""}, "art|强国「油」我小课堂": {"u": "assets/covers/art-05.jpg", "ph": false, "tone": ""}, "art|「梦溪青春心向党」优秀学生党员党课展示": {"u": "assets/covers/art-06.jpg", "ph": false, "tone": ""}, "art|工作室事务": {"u": "assets/covers/art-07.jpg", "ph": false, "tone": ""}, "art|党建与支部": {"u": "assets/covers/art-08.jpg", "ph": false, "tone": ""}, "art|年终总结 · 年度盘点": {"u": "assets/covers/art-09.jpg", "ph": false, "tone": ""}, "art|社会实践": {"u": "assets/covers/art-10.jpg", "ph": false, "tone": ""}, "art|学风建设": {"u": "assets/covers/art-11.jpg", "ph": false, "tone": ""}, "art|迎新季": {"u": "assets/covers/art-12.jpg", "ph": false, "tone": ""}, "art|学生工作": {"u": "assets/covers/art-13.jpg", "ph": false, "tone": ""}, "art|获奖与荣誉": {"u": "assets/covers/art-14.jpg", "ph": false, "tone": ""}, "art|影像与校园文化": {"u": "assets/covers/art-15.jpg", "ph": false, "tone": ""}, "vid|学思践悟精神谱系": {"u": "assets/covers/vid-01.jpg", "ph": false, "tone": ""}, "vid|强国「油」我小课堂": {"u": "assets/covers/vid-02.jpg", "ph": true, "tone": "gold"}, "vid|「梦溪青春心向党」党课展示": {"u": "assets/covers/vid-03.jpg", "ph": false, "tone": ""}, "vid|强国油我，青春实干": {"u": "assets/covers/vid-04.jpg", "ph": false, "tone": ""}, "vid|强国「油」我 · 先锋行动/先锋计划": {"u": "assets/covers/vid-05.jpg", "ph": true, "tone": "red"}, "vid|单篇影像": {"u": "assets/covers/vid-06.jpg", "ph": false, "tone": ""}};
+  function coverFor(n, k){ return COV[k + '|' + n] || null; }
+  var kind  = 'art';
+
+  function renderGrid(){
+    var arr = data[kind];
+    var total = arr.reduce(function(s,x){ return s + x.c; }, 0);
+    meta.innerHTML = arr.length + ' 个系列 · <b>' + total + '</b> ' + (kind==='art'?'篇原创图文':'条影像') +
+                     ' · 点系列看全部条目';
+    grid.innerHTML = '';
+    grid.classList.toggle('is-six', arr.length <= 6);
+    arr.forEach(function(s, i){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'ser';
+      var cov = coverFor(s.n, kind);
+      var no  = String(i+1).padStart(2,'0');
+      var cnt = s.c + (kind === 'art' ? ' 篇 · ' : ' 条 · ') + s.k;
+      var meta =
+        '<div class="ser__meta">' +
+          '<span class="ser__t">' + s.n + '</span>' +
+          '<span class="ser__m"><b>' + s.c + '</b>' + (kind==='art'?'篇':'条') +
+            ' · ' + s.k + '</span>' +
+        '</div>';
+      if (cov && cov.ph){
+        /* 纯色素材 → 定制档案袋：图标 + 居中烫金字，底部图文区不生成 */
+        b.innerHTML =
+          '<div class="ser__cov cover-placeholder' + (cov.tone ? ' ph--' + cov.tone : '') + '">' +
+            '<img src="' + cov.u + '" alt="" loading="lazy" decoding="async" width="800" height="450">' +
+            '<span class="ph__lb">' +
+              '<b class="ph__t">' + s.n + '</b>' +
+              '<span class="ph__m">' + cnt + '</span>' +
+            '</span>' +
+          '</div>';
+      } else {
+        b.innerHTML =
+          '<div class="ser__cov' + (cov ? ' has-img' : '') + '">' +
+            (cov
+              ? '<img src="' + cov.u + '" alt="" loading="lazy" decoding="async" width="800" height="450">'
+              : '<span class="ser__no">' + no + '</span>') +
+            '<span class="ser__k">' + s.k + '</span>' +
+            meta +
+          '</div>';
+      }
+      b.title = s.n;
+      b.addEventListener('click', function(){ openList(s, b); });
+      grid.appendChild(b);
+    });
+  }
+
+  function openList(s, btn){
+    cab.dataset.view = 'list';
+    hn.textContent = s.n;
+    hc.textContent = s.c + (kind==='art' ? ' 篇 · ' + s.k : ' 条 · ' + s.k);
+    items.innerHTML = '';
+    s.it.forEach(function(it, i){
+      var a = document.createElement('a');
+      a.className = 'it'; a.href = it.u;
+      if (!touch){ a.target = '_blank'; a.rel = 'noopener'; }
+      /* 24 条都带着同一个系列名前缀，等于 24 次重复噪音。
+         系列名已在表头，这里只留「|」之后的真标题，完整标题进 title 属性。 */
+      var sep = it.t.search(/[|｜]/);
+      var short = sep > 0 ? it.t.slice(sep + 1).trim() : it.t;
+      if (sep > 0) a.title = it.t;
+      a.innerHTML =
+        '<span class="it__no">' + String(i+1).padStart(2,'0') + '</span>' +
+        '<span class="it__t">' + short + '</span>' +
+        (it.d ? '<span class="it__d">' + it.d + '</span>' : '') +
+        (it.r ? '<span class="it__r">阅读 ' + it.r + '</span>' : '<span class="it__go">↗</span>');
+      /* <ol> 的直接子元素必须是 <li>：a.it 外面包一层 li（Y9/B3） */
+      var li = document.createElement('li');
+      li.appendChild(a);
+      items.appendChild(li);
+    });
+    items.scrollTop = 0;
+  }
+
+  document.getElementById('cabBack').addEventListener('click', function(){
+    cab.dataset.view = 'index';
+  });
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      kind = t.dataset.k;
+      tabs.forEach(function(x){
+        var on = x === t;
+        x.classList.toggle('on', on);
+        x.setAttribute('aria-selected', String(on));
+      });
+      cab.dataset.view = 'index';
+      renderGrid();
+    });
+  });
+
+  renderGrid();
+})();
+
+/* ══════════════════════════════════════════════════════════════════
+   C · 团队环廊
+   保留环廊，修四件事：
+     1. 侧卡不再用黑色 fadeColor（换底色就露黑边）→ 用 opacity 衰减
+     2. 信息不塞环下 2 行 → 全部进 C 位卡
+     3. 加姓氏索引 → 「找人要转三下」解决
+     4. 手机不压扁环 → 改横向 snap
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var PEOPLE = [
+    {n:'兰冰芯',t:'主持人',r:'中共党员 · 硕士研究生 · 讲师',
+     b:'四川省第七届辅导员年度人物（提名）、校优秀共产党员。优秀事迹入编教育部「非凡十年·我的教育故事」。2024 年作为全省唯一高校代表主讲四川党建《党课星期天》，被省委组织部收录进《基层优秀党课报告》。',
+     s:'主持 E 级项目 11 项 · 论文 14 篇 · 参编专著 3 本 · 分享 8 次', g:0},
+    {n:'张凤',t:'顾问',r:'西南石油大学党建办公室主任 · 党委组织部副部长',b:'',s:'', g:1},
+    {n:'钱广',t:'顾问',r:'石油与天然气工程学院党委副书记、纪委书记',b:'',s:'', g:1},
+    {n:'舒小立',t:'顾问',r:'西南石油大学心理发展与服务中心副主任',b:'',s:'', g:1},
+    {n:'岳陈军',t:'成员',r:'党委学生工作部 大学生网络文化建设办公室主任',
+     b:'中国高等教育学会思想政治教育分会会员、四川省网络文化协会专家会员。获全国及四川省「优秀易班指导教师」。',s:'', g:2},
+    {n:'张家彬',t:'成员',r:'中共党员 · 硕士研究生 · 讲师',
+     b:'中国石油工程设计大赛「全国优秀指导教师」，连续 5 年获评「全国先进个人」。',s:'', g:2},
+    {n:'谢诗雪',t:'成员',r:'中共党员 · 硕士研究生 · 助教',
+     b:'中国石油工程设计大赛先进个人、创新创业工作先进个人、职业生涯发展大赛优秀指导老师。',s:'', g:2},
+    {n:'肖雨桐',t:'成员',r:'中共党员 · 教育学硕士 · GCDF 全球职业规划师',
+     b:'2021 年毕业于华中师范大学。BCF 生涯规划师。研究方向：思想政治教育、职业生涯规划、心理健康教育。',s:'', g:2},
+    {n:'廖俊怡',t:'成员',r:'中共党员 · 硕士研究生 · 助教',
+     b:'计算机与软件学院研究生辅导员。把「为党育人」放在首要位置：辅学生成长、导学生方向、员学生梦想。',s:'', g:2},
+    {n:'程美容',t:'成员',r:'中共党员 · 硕士研究生 · 助教',
+     b:'获校「高校网络教育优秀作品征集大赛」一等奖、职业发展与就业指导优秀案例二等奖。',s:'', g:2}
+  ];
+
+  var PHOTO = {"兰冰芯": "assets/team-m-lanbingxin.webp", "张凤": "assets/team-advisor-zhangfeng.webp", "钱广": "assets/team-advisor-qianguang.webp", "舒小立": "assets/team-advisor-shuxiaoli.webp", "岳陈军": "assets/team-m-yuechenjun.webp", "张家彬": "assets/team-m-zhangjiabin.webp", "谢诗雪": "assets/team-m-xieshixue.webp", "肖雨桐": "assets/team-m-xiaoyutong.webp", "廖俊怡": "assets/team-m-liaojunyi.webp", "程美容": "assets/team-m-chengmeirong.webp"};
+
+  var stage = document.getElementById('ringStage');
+  var ring  = document.getElementById('ring');
+  var ridx  = document.getElementById('ridx');
+  var capN = document.getElementById('capN'), capTag = document.getElementById('capTag');
+  var capRole = document.getElementById('capRole'), capBio = document.getElementById('capBio');
+  var capStat = document.getElementById('capStat');
+  if (!stage) return;
+
+  var N = PEOPLE.length, STEP = 360 / N;
+  var rot = 0, autoplay = null, paused = false;
+
+  PEOPLE.forEach(function(p, i){
+    var d = document.createElement('div');
+    d.className = 'ri';
+    d.style.setProperty('--i', i);
+    var ph = PHOTO[p.n];
+    d.innerHTML = (ph
+        ? '<img src="' + ph + '" alt="' + p.n + '" loading="lazy" decoding="async" width="148" height="196">'
+        : '<div class="ri__ph">' + p.n.charAt(0) + '<small>PORTRAIT</small></div>') +
+                  '<div class="ri__ov"><span class="ri__n">' + p.n + '</span>' +
+                  '<span class="ri__t">' + p.t + '</span></div>';
+    d.addEventListener('click', function(){ select(i); });
+    stage.appendChild(d);
+  });
+  var cards = Array.prototype.slice.call(stage.children);
+
+  PEOPLE.forEach(function(p, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'g' + p.g;
+    b.textContent = p.n;
+    b.setAttribute('aria-label', p.n + '（' + p.t + '）');
+    b.addEventListener('click', function(){ select(i); });
+    ridx.appendChild(b);
+  });
+  var idxBtns = Array.prototype.slice.call(ridx.children);
+
+  var active = 0;
+  function paint(){
+    stage.style.setProperty('--rot', rot + 'deg');
+    var front = ((Math.round(-rot / STEP) % N) + N) % N;
+    cards.forEach(function(c, i){
+      var delta = Math.abs(((i - front + N) % N + N) % N);
+      delta = Math.min(delta, N - delta);
+      c.classList.toggle('is-front', delta === 0);
+      /* 注意：这里绝对不能写 c.style.opacity。
+         内联样式会盖掉 CSS 的 filter 方案，纸底上立刻褪成半透明鬼影。 */
+    });
+    if (front !== active){ active = front; showCap(front); }
+    idxBtns.forEach(function(b, i){ b.classList.toggle('on', i === front); });
+  }
+
+  function showCap(i){
+    var p = PEOPLE[i];
+    capN.textContent = p.n + '　';
+    capTag.textContent = p.t;
+    capRole.textContent = p.r;
+    capBio.textContent = p.b || '';
+    capBio.style.display = p.b ? '-webkit-box' : 'none';
+    capStat.textContent = p.s || '';
+    capStat.style.display = p.s ? 'block' : 'none';
+  }
+
+  function select(i){
+    /* 取最近路径旋转，不要让环倒着转一圈 */
+    var want = -i * STEP;
+    var diff = ((want - rot) % 360 + 540) % 360 - 180;
+    rot = rot + diff;
+    paint();
+  }
+
+  /* 拖动 */
+  var dx0 = 0, r0 = 0, dragging = false;
+  function down(x){ dragging = true; dx0 = x; r0 = rot; ring.classList.add('is-dragging'); paused = true; }
+  function move(x){ if (!dragging) return; rot = r0 + (x - dx0) * 0.28; paint(); }
+  function up(){ if (!dragging) return; dragging = false; ring.classList.remove('is-dragging');
+    rot = Math.round(rot / STEP) * STEP; paint(); paused = false; }
+
+  ring.addEventListener('mousedown', function(e){ e.preventDefault(); down(e.clientX); });
+  window.addEventListener('mousemove', function(e){ move(e.clientX); });
+  window.addEventListener('mouseup', up);
+  ring.addEventListener('touchstart', function(e){ down(e.touches[0].clientX); }, { passive: true });
+  ring.addEventListener('touchmove', function(e){ move(e.touches[0].clientX); }, { passive: true });
+  ring.addEventListener('touchend', up, { passive: true });
+  ring.addEventListener('mouseenter', function(){ paused = true; });
+  ring.addEventListener('mouseleave', function(){ paused = false; });
+
+  /* 建制条 */
+  Array.prototype.slice.call(document.querySelectorAll('.roster button')).forEach(function(b){
+    b.addEventListener('click', function(){ select(parseInt(b.dataset.go, 10)); });
+  });
+
+  var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced){
+    autoplay = setInterval(function(){
+      if (paused || document.hidden) return;
+      rot -= STEP; paint();
+    }, 5200);
+  }
+  window.__ringPause = function(p){ paused = p; };
+
+  paint();
+  showCap(0);
+})();
+
+/* ══════════════════════════════════════════════════════════════════
+   D · 展厅门牌 + 导览员
+   只旁听，不改轨道逻辑：监听 body 的 data-room 变化。
+   ══════════════════════════════════════════════════════════════════ */
+(function(){
+  var MAP = {
+    hero:'序 · 深地取光', honor:'壹 · 荣光', about:'贰 · 育人体系',
+    matrix:'叁 · 内容矩阵', works:'肆 · 作品归档', team:'伍 · 同行者', follow:'尾声 · 守灯'
+  };
+  var vch = document.getElementById('vch');
+  var buddy = document.getElementById('railBuddy');
+  var last = null, t = null;
+
+  function sync(){
+    var r = document.body.dataset.room || 'hero';
+    if (r === last) return;
+    if (vch) vch.textContent = MAP[r] || '';
+    if (buddy && last !== null){
+      buddy.classList.remove('hop');
+      clearTimeout(t);
+      t = setTimeout(function(){ buddy.classList.add('hop'); }, 60);
+      setTimeout(function(){ buddy.classList.remove('hop'); }, 560);
+    }
+    last = r;
+  }
+  new MutationObserver(sync).observe(document.body, { attributes:true, attributeFilter:['data-room'] });
+  sync();
+})();
+</script>
 </body>
 </html>
